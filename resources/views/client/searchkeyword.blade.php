@@ -436,14 +436,12 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
             <div class="pt-2">
 
  
-<div class="min-h-screen bg-gray-50 flex items-center justify-center py-10 px-4">
-  <div class="w-full max-w-md bg-white rounded-2xl shadow-md border border-gray-100 p-6">
  
 
     
  
    <aside class="hidden lg:block w-80 xl:w-96 flex-shrink-0 sticky top-[80px] self-start">
-            <div class="pt-2">@include('client.components.sidebar-enquiry')</div>
+            <div class="pt-2">@include('client.layouts.common_sidebar_form')</div>
 
             {{-- Ad Tiles --}}
             <div class="pb-3 pt-2 border-t border-gray-100 mt-3 flex flex-col gap-2">
@@ -474,7 +472,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
    
 
 
-</div>
+ 
 </div>
   
 <!-- Add this in your blade file before </body> -->
