@@ -430,12 +430,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
 
 
 
-        
-        {{-- Sidebar --}}
-        <aside class="hidden lg:block w-80 xl:w-96 flex-shrink-0 sticky top-[8px] self-start">
-            <div class="pt-2">
-
- 
+  
  
 
     
@@ -473,177 +468,13 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
 
 
  
-</div>
-  
-<!-- Add this in your blade file before </body> -->
-<script>
-let currentStep = 0;
-const form = document.getElementById("lead_Form");
-
-function showStep(index) {
-  document.querySelectorAll(".form-step").forEach((s, i) => {
-    s.classList.toggle("hidden", i !== index);
-  });
-  for (let i = 0; i < 3; i++) {
-    const dot = document.getElementById("dot-" + i);
-    if (dot) {
-      dot.classList.toggle("bg-blue-500", i <= index);
-      dot.classList.toggle("bg-gray-200", i > index);
-    }
-  }
-  currentStep = index;
-}
-
-function nextStep() {
-  if (currentStep < 2) showStep(currentStep + 1);
-}
-
-function prevStep() {
-  if (currentStep > 0) showStep(currentStep - 1);
-}
-
-function showErrorsForm(form, errors) {
-  form.querySelectorAll(".error-text").forEach(el => el.remove());
-  form.querySelectorAll(".border-red-500").forEach(el => {
-    el.classList.remove("border-red-500");
-    el.classList.add("border-gray-300");
-  });
-
-  Object.keys(errors).forEach(key => {
-    let input;
-    if (key === "frmcheck") {
-      input = form.querySelector('input[name="frmcheck[]"]');
-    } else {
-      input = form.querySelector(`[name="${key}"]`);
-    }
-    if (input) {
-      input.classList.remove("border-gray-300");
-      input.classList.add("border-red-500");
-      const p = document.createElement("p");
-      p.className = "error-text text-red-500 text-xs mt-1";
-      p.innerText = errors[key][0];
-      input.parentElement.appendChild(p);
-    }
-  });
-}
-
-function validateSidebar(btn, step) {
-  const formData = new FormData(form);
-  formData.append("step", step);
-
-  fetch("/form/validate-step", {
-    method: "POST",
-    headers: {
-      "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content
-    },
-    body: formData
-  })
-    .then(res => res.json())
-    .then(res => {
-      if (res.status) {
-        nextStep();
-      } else {
-        showErrorsForm(form, res.errors);
-      }
-    })
-    .catch(err => console.error("Error:", err));
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  showStep(0);
-
-  form.addEventListener("submit", function(e) {
-    e.preventDefault();
-    const terms = form.querySelector('[name="terms"]');
-    if (!terms || !terms.checked) {
-      const label = terms.parentElement;
-      const p = document.createElement("p");
-      p.className = "error-text text-red-500 text-xs mt-1";
-      p.innerText = "You must agree to the terms.";
-      label.after(p);
-      return;
-    }
-    // Your form submit:
-    // homeController.saveTwoEnquiry(this)
-    // OR: form.submit();
-
-    showStep(3);
-    document.getElementById("stepDots").classList.add("hidden");
-  });
-});
-</script>
  
-<!-- 
-<script>
-let currentStep = 0;
-const steps = document.querySelectorAll(".form-step");
-const indicators = document.querySelectorAll(".step-indicator");
+   
 
-function showStep(index) {
-  steps.forEach((step, i) => {
-    step.classList.toggle("hidden", i !== index);
-  });
-
-  indicators.forEach((dot, i) => {
-    dot.classList.toggle("bg-blue-500", i === index);
-    dot.classList.toggle("bg-gray-300", i !== index);
-  });
-}
-
-function nextStep() {
-  if (currentStep < steps.length - 1) {
-    currentStep++;
-    showStep(currentStep);
-  }
-}
-
-function prevStep() {
-  if (currentStep > 0) {
-    currentStep--;
-    showStep(currentStep);
-  }
-}
-
-// init
-showStep(0);
-</script> -->
 
 
  
-            
-
-
-
-
-
-</div>
-
-            {{-- Ad Tiles --}}
-            <div class="pb-3 pt-2 border-t border-gray-100 mt-3 flex flex-col gap-2">
-                <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-600 p-3 cursor-pointer hover:-translate-y-0.5 transition-transform">
-                    <div class="flex items-center gap-2.5">
-                        <div class="w-8 h-8 flex-shrink-0 bg-white/20 rounded-xl flex items-center justify-center border border-white/30">🛏</div>
-                        <div class="flex-1 min-w-0">
-                            <span class="text-[9px] font-bold text-white/60 uppercase tracking-widest">Sponsored</span>
-                            <p class="text-white font-bold text-xs leading-tight">Sleep Better Tonight</p>
-                            <p class="text-white/70 text-[10px]">Orthopedic mattresses from ₹4,999</p>
-                        </div>
-                        <button class="flex-shrink-0 flex items-center gap-1 px-2.5 py-1 bg-white/20 hover:bg-white/30 border border-white/30 text-white text-[10px] font-bold rounded-lg transition-all whitespace-nowrap">View Deals ↗</button>
-                    </div>
-                </div>
-                <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 p-3 cursor-pointer hover:-translate-y-0.5 transition-transform">
-                    <div class="flex items-center gap-2.5">
-                        <div class="w-8 h-8 flex-shrink-0 bg-white/20 rounded-xl flex items-center justify-center border border-white/30">🛍</div>
-                        <div class="flex-1 min-w-0">
-                            <span class="text-[9px] font-bold text-white/60 uppercase tracking-widest">Sponsored</span>
-                            <p class="text-white font-bold text-xs leading-tight">Home Decor Sale</p>
-                            <p class="text-white/70 text-[10px]">Up to 60% off on premium furniture</p>
-                        </div>
-                        <button class="flex-shrink-0 flex items-center gap-1 px-2.5 py-1 bg-white/20 hover:bg-white/30 border border-white/30 text-white text-[10px] font-bold rounded-lg transition-all whitespace-nowrap">Shop Now ↗</button>
-                    </div>
-                </div>
-            </div>
-        </aside>
+ 
     </div>
 
     {{-- Agents comparison table --}}
