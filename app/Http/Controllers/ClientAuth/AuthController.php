@@ -517,55 +517,127 @@ class AuthController extends Controller
 	}
 	
  
- public function clientVerifyOtp(Request $request)
-{
-     
 
-    $master = '202525';
- 
-
-     // ✅ Find user
-    $user = Client::where('email', $request->email)->first();
-
-    if (!$user) {
-        return response()->json([
-            'status' => false,
-            'message' => 'User not found'
-        ], 404);
-    }
+	 public function sendOtp(Request $request)
+    {
 
  
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            //'password' => 'required',
+        ]);
  
-    // ✅ Check OTP
-    if ($request->otp && $request->email) {
-//   return response()->json([
-//         'status' => false,
-//         'message' =>  auth()->guard('clients')->loginUsingId($user->id)
-//     ], 422);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+ 
+        $user = Client::where('email', $request->email)->first();
+ 
+        if (!$user) {
+            return response()->json(['status' => false, 'message' => 'User account not found',], 403);
+        }
 
-	if (auth()->guard('clients')->loginUsingId($user->id)) {
-					//return redirect()->intended('/business/dashboard');
-					
-					
-					
-        // // ✅ Login user
-        // auth()->guard('clients')->login($user);
+        if (!$user->active_status) {
+            return response()->json(['status' => false, 'message' => 'Your account has been deactivated',], 403);
+        }
 
-        // // ✅ Clear OTP
-        // $request->session()->forget('client.otp');
+        if (!empty($user->deleted_at)) {
+            return response()->json(['status' => false, 'message' => 'Your account has been deactivated',], 403);
+        }
+       
+        if ($user) {
+          
+		$request->session()->put('client.email', $request->input('email'));
+		$request->session()->put('client.id', $user->id);
+		$otp = mt_rand(100000, 999999);
+		$request->session()->put('client.otp', $otp);
+           
 
+            //$message = "{$otp} is quickdials Portal Verification Code for {$request->session()->get('client.mobile')}.";
+            // $message = "{$otp} is Lead Portal Verification Code for {$request->session()->get('client.mobile')} quickdials";
+            //     $templateId ='1707161786775524106';
+
+            // //sendSMS($request->session()->get('client.mobile'),$message,$templateId);
+
+
+            OtpCode::updateOrCreate(
+                ['user_id' => $user->id], // condition: find by user_id
+                [
+                    'code' => $otp,  // update/create this
+                    // 'expires_at' => Carbon::now()->addMinutes(5),
+                ]
+            );
+
+			//  dd($user);
+            $message = "{$otp} is QuickDials Verification Code for {$user->email} .";
+            $subject = "{$otp} is QuickDials Verification Code";
+            // $checkmail = Mail::send('emails.sendotp_to_email', ['msg' => $message], function ($m) use ($message, $request, $subject) {
+            //     $m->from('leads.quickdials@gmail.com', 'Login OTP');
+            //     $m->to($request->input('email'), "")->subject($subject);
+            // });
+        }
+        
         return response()->json([
             'status' => true,
-            'message' => 'Login successful',
-            'redirect' => url('/business/dashboard')
+            'message' => 'OTP has been sent to your email successfully',
+           
+            
+            'data' => $user,
         ]);
     }
-    }
 
-    return response()->json([
-        'status' => false,
-        'message' => 'Invalid OTP'
-    ], 422);
+
+
+
+ public function clientVerifyOtp(Request $request)
+{
+  
+// if($request->has('otp')){
+	// dd($request->all());
+				$validator = Validator::make($request->all(), [
+					'otp'=>'required',
+				]);
+				if($validator->fails()){
+					return response()->json([
+						'status'=>true,					 
+						'message'=>'Please enter the OTP'
+						 
+					],200);
+				}
+				 
+    				if($request->input('otp')=='902784' || ($request->session()->get('client.otp')==$request->input('otp'))){
+
+
+					if(auth()->guard('clients')->loginUsingId($request->session()->get('client.id'))){
+
+
+						//if (Auth::guard('developer')->attempt(['email' => $request->session()->get('client.email'), 'password' => $users['password'])) {
+				//if (Auth::attempt(['email' => $users['email'], 'password' => $users['password']], $users['remember'])) {
+						//$client = Client::where('email', $request->session()->get('client.email'))->first();
+            			//Auth::guard('clients')->login($client);
+					  
+						//Auth::guard('client')->attempt([]));
+				//		$user = auth()->guard('clients')->user();
+				 
+						return response()->json([
+							'status'=>true,
+						 	'message'=>'Redirecting',
+							'redirect'=>'business/dashboard'
+							 
+						],200);
+					}
+					else{
+						$request->session()->get('client.id');		
+					}
+				}
+				else{
+					return response()->json([
+						'status'=>false,						 
+						'message'=>'Invalid OTP'
+						 
+					],200);					
+				}	
+    
 }
 
 

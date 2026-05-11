@@ -278,6 +278,11 @@ class OfficialController extends Controller
     {
         return view('official.privacy-policy');
     }
+
+    public function copyrightpolicy()
+    {
+        return view('official.copyright-policy');
+    }
     public function refundPolicy()
     {
         return view('official.refund-policy');

@@ -107,6 +107,17 @@
 
         {{-- Desktop action buttons --}}
         <div class="hidden md:flex items-center gap-3 shrink-0">
+ 
+
+ 
+
+
+
+
+
+
+
+
             <button
                 onclick="openLoginModal()"
                 class="flex items-center gap-1.5 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white text-xs font-semibold rounded-md shadow transition-colors"
@@ -194,11 +205,12 @@
     </div>
 </header>
 
+@include('client.layouts.login_popup');
 {{-- ─── Login Modal ─── --}}
-<div id="login-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+<div id="login-modalss" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
     <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6 relative">
         <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 transition-colors">
-            <i data-lucide="x" class="w-5 h-5"></i>
+            <svg class="w-5 h-5" stroke="currentColor" fill="none" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
         <div class="text-center mb-6">
             <img src="{{ asset('client/images/small-logo.png') }}" alt="QuickDials" class="h-10 mx-auto mb-3 object-contain" onerror="this.style.display='none'">
@@ -416,55 +428,55 @@ function toggleMobileMenu() {
 }
 
 // ─── Login Modal ───────────────────────────────────────────────────────────
-function openLoginModal()  { document.getElementById('login-modal').classList.remove('hidden'); }
-function closeLoginModal() { document.getElementById('login-modal').classList.add('hidden'); }
-document.getElementById('login-modal').addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) closeLoginModal();
-});
-function handleGoogleLogin() { console.log('Google login'); /* Implement OAuth */ }
-function handleEmailLogin()  {
-    const email = document.getElementById('login-email').value.trim();
-    if (email) { console.log('Email login:', email); /* Implement */ }
-}
+// function openLoginModal()  { document.getElementById('login-modal').classList.remove('hidden'); }
+// function closeLoginModal() { document.getElementById('login-modal').classList.add('hidden'); }
+// document.getElementById('login-modal').addEventListener('click', (e) => {
+//     if (e.target === e.currentTarget) closeLoginModal();
+// });
+// function handleGoogleLogin() { console.log('Google login'); /* Implement OAuth */ }
+// function handleEmailLogin()  {
+//     const email = document.getElementById('login-email').value.trim();
+//     if (email) { console.log('Email login:', email); /* Implement */ }
+// }
 
 
 
 
 
-document.getElementById("login-form").addEventListener("submit", async function(e) {
-    e.preventDefault(); // ❌ page reload stop
+// document.getElementById("login-form").addEventListener("submit", async function(e) {
+//     e.preventDefault(); // ❌ page reload stop
 
-    const form = e.target;
-    const formData = new FormData(form);
+//     const form = e.target;
+//     const formData = new FormData(form);
 
-    try {
-        const response = await fetch(form.action, {
-            method: "POST",
+//     try {
+//         const response = await fetch(form.action, {
+//             method: "POST",
          
-            headers: {
-                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
-                "Accept": "application/json"
-            },
-            body: formData
-        });
+//             headers: {
+//                 "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+//                 "Accept": "application/json"
+//             },
+//             body: formData
+//         });
 
-        const data = await response.json();
+//         const data = await response.json();
 
-        if (response.ok) {
-            // ✅ success
-            alert("Login successful!");
-            window.location.href = "/business/dashboard"; // redirect
-        } else {
-            // ❌ validation errors
-            console.log(data);
-            alert(data.message || "Login failed");
-        }
+//         if (response.ok) {
+//             // ✅ success
+//             alert("Login successful!");
+//             window.location.href = "/business/dashboard"; // redirect
+//         } else {
+//             // ❌ validation errors
+//             console.log(data);
+//             alert(data.message || "Login failed");
+//         }
 
-    } catch (error) {
-        console.error(error);
-        alert("Server error");
-    }
-});
+//     } catch (error) {
+//         console.error(error);
+//         alert("Server error");
+//     }
+// });
 
 
 

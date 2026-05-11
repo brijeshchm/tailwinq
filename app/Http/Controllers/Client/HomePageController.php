@@ -396,7 +396,7 @@ class HomePageController extends Controller
 					//$followUp->remark_by =Auth::user()->id;
 					$followUp->save();
 
-					leadassignWithoutZoneCounsellor($lead);
+					// leadassignWithoutZoneCounsellor($lead);
 
 					return response()->json([
 						'status' => true,
@@ -785,7 +785,7 @@ class HomePageController extends Controller
 					//$followUp->remark_by =Auth::user()->id;
 					$followUp->save();
 
-					leadassignWithoutZoneCounsellor($lead);
+					//leadassignWithoutZoneCounsellor($lead);
 
 					return response()->json([
 						'statusCode' => 1,
@@ -818,7 +818,7 @@ class HomePageController extends Controller
 					//$followUp->remark_by =Auth::user()->id;
 					$followUp->save();
 
-					leadassignWithoutZoneCounsellor($lead);
+					// leadassignWithoutZoneCounsellor($lead);
 
 					return response()->json([
 						'statusCode' => 1,
@@ -1019,7 +1019,7 @@ class HomePageController extends Controller
 				$followUp->lead_id = $lead->id;
 				//$followUp->remark_by =Auth::user()->id;
 				$followUp->save();
-				leadassignWithoutZoneCounsellor($lead);
+				// leadassignWithoutZoneCounsellor($lead);
 				return response()->json(['status' => 1, 'msg' => 'Lead added successfully'], 200);
 			}
 

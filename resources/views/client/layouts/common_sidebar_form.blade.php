@@ -53,7 +53,7 @@ try {
 
 
 <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-indigo-500/15"
-     x-data="sidebarEnquiry(@js($tracking) , @js($zonesForAlpine))">
+     x-data="sidebarEnquiry(@js($tracking) , @js($zonesForAlpine))" autocomplete="off">
 
     <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-500 via-violet-500 to-purple-600 p-[2px]"></div>
 
@@ -105,7 +105,7 @@ try {
 
             {{-- Honeypot (anti-spam) --}}
             <input type="text" x-model="form.website" tabindex="-1" autocomplete="off"
-                   class="absolute opacity-0 pointer-events-none -left-[9999px]" aria-hidden="true">
+                   class="absolute opacity-0 pointer-events-none -left-[9999px]" aria-hidden="true"  autocomplete="off">
 
             {{-- Hidden tracking fields (kept for non-JS scrapers; Alpine state is the source of truth) --}}
             <input type="hidden" name="lead_form" value="{{ $tracking['lead_form'] }}">
@@ -145,7 +145,7 @@ try {
                         </span>
                         <input type="text" x-model="form.name" placeholder="Your full name"
                                class="w-full text-xs border rounded-lg pl-7 pr-3 py-1.5 outline-none transition-all placeholder-gray-400 bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
-                               :class="errors.name ? 'border-red-400 ring-2 ring-red-100' : 'border-gray-200'">
+                               :class="errors.name ? 'border-red-400 ring-2 ring-red-100' : 'border-gray-200'"  autocomplete="off">
                     </div>
                     <p x-show="errors.name" x-text="errors.name" class="text-[10px] text-red-500 mt-0.5"></p>
                 </div>
@@ -178,7 +178,7 @@ try {
                         </span>
                         <input type="tel" x-model="form.phone" placeholder="+91 00000 00000"
                                class="w-full text-xs border rounded-lg pl-7 pr-3 py-1.5 outline-none transition-all placeholder-gray-400 bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
-                               :class="errors.phone ? 'border-red-400 ring-2 ring-red-100' : 'border-gray-200'">
+                               :class="errors.phone ? 'border-red-400 ring-2 ring-red-100' : 'border-gray-200'"  autocomplete="off">
                     </div>
                     <p x-show="errors.phone" x-text="errors.phone" class="text-[10px] text-red-500 mt-0.5"></p>
                 </div>
@@ -222,7 +222,7 @@ try {
                placeholder="Search city…"
                autocomplete="off"
                class="w-full text-xs border rounded-lg pl-7 pr-3 py-1.5 outline-none transition-all placeholder-gray-400 bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
-               :class="errors.location ? 'border-red-400' : 'border-gray-200'">
+               :class="errors.location ? 'border-red-400' : 'border-gray-200'"  autocomplete="off">
 
         {{-- ✅ ONE dropdown wrapper only --}}
         <div x-show="showCities"
