@@ -61,6 +61,8 @@
                         <input
                             id="hero-search-input"
                             type="text"
+                        autocomplete="off"
+                      
                             placeholder="Search businesses, services..."
                             class="flex-1 border-none outline-none h-11 text-sm px-3 rounded-none text-gray-800 bg-transparent placeholder:text-gray-400"
                             oninput="handleHeroSearchInput(this.value)"

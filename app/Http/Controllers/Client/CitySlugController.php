@@ -25,6 +25,21 @@ class CitySlugController extends Controller
             return null;
         }
     }
+    /**
+     * Fetch data from the QuickDials API.
+     */
+    private function businessOwnersData(): ?array
+    {
+        try {
+                $res = Http::timeout(10)->withoutVerifying()
+                    ->get('https://api.quickdials.com/api/website/business-owners');
+                return $res->successful() ? $res->json() : null;
+            } catch (\Exception $e) {
+                \Log::error('BusinessOwners API: ' . $e->getMessage());
+                return null;
+            }
+              
+    }
 
     /**
      * Check if a city is valid via the QuickDials city-check API.
@@ -213,11 +228,15 @@ class CitySlugController extends Controller
 
         // ── Fetch data ─────────────────────────────────────────────────────
         $response = $this->fetchData($city, $slug);
+        $businessOwners = $this->businessOwnersData();
 
-     
+        $growthBusiness = $businessOwners['data']['businessOwners'] ?? [];
+       
+          
         $data     = $response['data'] ?? [];
+    
         $kwData   = $data['keyword'] ?? [];
-
+  
         // ── Keyword / meta ─────────────────────────────────────────────────
         $keyword    = $this->replaceCity($kwData['keyword'] ?? $slug, $city);
         $area       = $kwData['area'] ?? $city;
@@ -288,7 +307,7 @@ class CitySlugController extends Controller
             'businesses', 'businessChunks',
             'agents', 'reviews', 'categories',
             'relatedCategory', 'servicesRelated',
-            'quickBusinesses',
+            'quickBusinesses','growthBusiness'
         ) + [
             'metaTitle'       => $kwData['meta_title'] ?? "{$keyword} in " . ucfirst($city),
             'metaDescription' => $kwData['meta_description'] ?? '',
@@ -316,7 +335,9 @@ class CitySlugController extends Controller
     
         $data     = $response['data'] ?? [];
         $kwData   = $data['keyword'] ?? [];
+        $businessOwners = $this->businessOwnersData();
 
+        $growthBusiness = $businessOwners['data']['businessOwners'] ?? [];
         // ── Keyword / meta ─────────────────────────────────────────────────
         $keyword    = $this->replaceCity($kwData['keyword'] ?? $slug, '');
         $area       = $kwData['area'] ?? '';
@@ -392,7 +413,7 @@ class CitySlugController extends Controller
             'businesses', 'businessChunks',
             'agents', 'reviews', 'categories',
             'relatedCategory', 'servicesRelated',
-            'quickBusinesses',
+            'quickBusinesses','growthBusiness'
         ) + [
             'metaTitle'       => $kwData['meta_title'] ?? "{$keyword} ",
             'metaDescription' => $kwData['meta_description'] ?? '',

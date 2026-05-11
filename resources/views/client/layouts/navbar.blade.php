@@ -73,6 +73,10 @@
                 <input
                     id="sticky-search-input"
                     type="text"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    spellcheck="false"
                     placeholder="Search businesses, services..."
                     class="flex-1 text-xs px-2.5  border-gray-100 outline-none bg-transparent text-gray-800 placeholder:text-gray-400 hover:border-gray-300"
                     oninput="handleStickySearchInput(this.value)"

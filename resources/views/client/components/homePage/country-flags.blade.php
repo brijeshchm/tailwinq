@@ -74,6 +74,8 @@
                 `<span><a href="/${slug}/${kw.slug}" class="hover:text-blue-600 transition-colors">${kw.keyword}</a>${i < allKeywords.length - 1 ? '<span class="mx-1.5 text-gray-300">|</span>' : ''}</span>`
             ).join('') + '</p>';
     }
+ 
+
 })();
 </script>
  

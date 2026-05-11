@@ -310,7 +310,9 @@
         <h3>Fill out the form to receive the best offers <span>{{ !empty($keyword->keyword) ? $keyword->keyword : '' }}</span></h3>
         <p>We’ll send you the contact details instantly free of charge</p>
  
-        <form class="lead_Form autoLeadForm" onsubmit="return homeController.saveTwoEnquiry(this)" method="POST">
+        <form class="lead_Form autoLeadForm" onsubmit="return homeController.saveTwoEnquiry(this)" method="POST" autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off">
          {{ csrf_field() }} 
 
        <div class="form-group input-icon">   

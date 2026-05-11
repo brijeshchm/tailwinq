@@ -16,7 +16,7 @@
             </div>
             <a
                 href="{{ route('login') }}"
-                class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold text-sm px-6 py-2.5 rounded-full shadow-lg shadow-blue-200/50 shrink-0 whitespace-nowrap transition-colors"
+                class="flex items-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-bold text-sm px-6 py-2.5 rounded-full shadow-lg shadow-blue-200/50 shrink-0 whitespace-nowrap transition-colors"
             >
                 Create Free Account
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>

@@ -9,7 +9,9 @@
     We’ll send you the contact details instantly free of charge
   </p>
 
-  <form id="lead_Form" onsubmit="return homeController.saveTwoEnquiry(this)" method="POST" class="space-y-4">
+  <form id="lead_Form" onsubmit="return homeController.saveTwoEnquiry(this)" method="POST" class="space-y-4" autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off">
     {{ csrf_field() }}
 
     <!-- Steps Indicator -->

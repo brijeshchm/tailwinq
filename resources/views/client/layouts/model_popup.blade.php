@@ -36,7 +36,9 @@
 
 				<!-- Form onsubmit="return homeController.saveTwoEnquiry(this)" method="POST"-->
 				<form class="popup-form" id="commPopleadForm" onsubmit="return homeController.saveTwoEnquiry(this)"
-					method="POST">
+					method="POST" autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off">
 
 					<!-- STEP 1 -->
 					<div class="comm-popup-step active">

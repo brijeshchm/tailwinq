@@ -82,12 +82,12 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
         <div class="absolute inset-0 bg-indigo-900/50"></div>
         <div class="relative w-full px-3 sm:px-8 py-3 sm:py-5 flex items-center gap-3 sm:gap-5 h-full">
             <div class="flex-1 min-w-0">
-                <div class="flex items-center gap-1.5 sm:gap-2 mb-0.5 sm:mb-1 flex-wrap">
+                <!-- <div class="flex items-center gap-1.5 sm:gap-2 mb-0.5 sm:mb-1 flex-wrap">
                     <span class="text-[9px] sm:text-[10px] font-bold text-white/60 border border-white/20 px-1.5 sm:px-2 py-0.5 rounded-full uppercase tracking-widest">Advertisement</span>
                     <span class="text-[9px] sm:text-[10px] font-bold text-amber-300 bg-amber-300/10 border border-amber-300/20 px-1.5 sm:px-2 py-0.5 rounded-full animate-pulse">Limited Time Offer</span>
-                </div>
-                <h2 class="text-white font-bold text-sm sm:text-xl leading-snug">Transform Your Sleep — Up to 50% Off Premium Mattresses</h2>
-                <p class="text-white/70 text-[10px] sm:text-sm mt-0.5 hidden sm:block">Free delivery · 100-night trial · EMI starting ₹799/mo</p>
+                </div> -->
+                <!-- <h2 class="text-white font-bold text-sm sm:text-xl leading-snug">Transform Your Sleep — Up to 50% Off Premium Mattresses</h2> -->
+                <!-- <p class="text-white/70 text-[10px] sm:text-sm mt-0.5 hidden sm:block">Free delivery · 100-night trial · EMI starting ₹799/mo</p> -->
             </div>
             <div class="flex-shrink-0 flex items-center gap-2 sm:gap-3">
                 
@@ -232,14 +232,14 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
         <main class="flex-1 min-w-0">
  
             {{-- Listings --}}
-            <div x-show="filteredCount === 0" class="text-center py-20">
+            <!-- <div x-show="filteredCount === 0" class="text-center py-20">
                 <div class="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <span class="text-2xl">🔍</span>
                 </div>
                 <p class="text-gray-700 font-semibold mb-1">No businesses found</p>
                 <p class="text-gray-400 text-sm">Try adjusting your search or filters</p>
                 <button @click="resetFilters()" class="mt-4 px-5 py-2 bg-indigo-600 text-white text-sm font-semibold rounded-xl hover:bg-indigo-700">Clear all filters</button>
-            </div>
+            </div> -->
 
             <div id="listings-container" x-show="filteredCount > 0">
                 @php $adInterval = 5; @endphp
@@ -283,6 +283,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
                 </div>
             </div>
 
+            @if($totalReviews)
             {{-- Reviews Section --}}
             <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 mt-4">
                 <div class="flex items-center justify-between mb-5">
@@ -350,17 +351,26 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
                 @endforelse
             </div>
 
+            @endif
             {{-- Property Banner --}}
             <div class="w-full bg-[#E9D9B8] rounded-lg p-4 mt-4 md:p-6 flex flex-col md:flex-row items-center justify-between gap-4">
                 <div class="flex items-center gap-4">
-                    <div class="text-4xl">🏠</div>
+                    <div class="w-12 h-12 flex items-center justify-center overflow-hidden rounded-lg">
+    
+    <img 
+        src="{{ $kwData['key_icon'] ?? $kwData['child_icon'] }}" 
+        alt="{{ $qb['name'] ?? '' }}"
+        class="w-8 h-8 object-contain group-hover:scale-105 transition-transform duration-500"
+    >
+
+</div>
                     <div>
                         <h3 class="text-lg md:text-xl font-bold text-gray-800">Attention!</h3>
-                        <p class="text-sm md:text-base font-semibold text-gray-700">Property Owners</p>
+                        <p class="text-sm md:text-base font-semibold text-gray-700">Advertise Owners</p>
                     </div>
                 </div>
                 <div class="text-center md:text-left max-w-md">
-                    <p class="text-sm md:text-base text-gray-800 leading-relaxed">Looking to Buy/Sell or Rent Your Property? Advertise on Quickdials Properties</p>
+                    <p class="text-sm md:text-base text-gray-800 leading-relaxed">Looking to {{ $keyword }}? Advertise on Quickdials Provider</p>
                 </div>
                 <div>
                     <button class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2.5 rounded-md flex items-center gap-2 transition">
@@ -421,11 +431,11 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
                         <h2 class="text-2xl md:text-3xl font-bold mb-3">Trying to grow your business?</h2>
                         <p class="text-sm md:text-base mb-6 text-gray-200">Create a listing on Quickdials now and start getting enquiries</p>
                         <div class="flex flex-wrap items-center gap-6 md:gap-10 mb-6">
-                            <div><h3 class="text-xl font-bold text-orange-300">30 Lakh+</h3><p class="text-sm text-gray-200">Monthly Visitors</p></div>
+                            <div><h3 class="text-xl font-bold text-orange-300">{{ $growthBusiness['Keyword'] }}</h3><p class="text-sm text-gray-200">Service Visitors</p></div>
                             <div class="hidden md:block w-px h-10 bg-gray-400"></div>
-                            <div><h3 class="text-xl font-bold text-orange-300">8 Lakh+</h3><p class="text-sm text-gray-200">Enquiries Per month</p></div>
+                            <div><h3 class="text-xl font-bold text-orange-300">{{ $growthBusiness['ProductsServices'] }}</h3><p class="text-sm text-gray-200">Products Services</p></div>
                             <div class="hidden md:block w-px h-10 bg-gray-400"></div>
-                            <div><h3 class="text-xl font-bold text-orange-300">20000+</h3><p class="text-sm text-gray-200">Listed Businesses</p></div>
+                            <div><h3 class="text-xl font-bold text-orange-300">{{ $growthBusiness['GrowClient'] }}</h3><p class="text-sm text-gray-200">Listed Businesses</p></div>
                         </div>
                         <a href="{{ route('login') }}" class="inline-block bg-orange-500 hover:bg-orange-600 px-6 py-3 rounded-md font-semibold mb-6 transition">Add Your Business</a>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-gray-200">
@@ -475,7 +485,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
     {{-- Agents comparison table --}}
     @if(count($agents ?? []) > 0)
     <section class="w-full p-4">
-        <h2 class="text-2xl md:text-3xl font-bold mb-4">TOP {{ count($agents) }} {{ $keyword }} in {{ ucfirst($city) }}</h2>
+        <h2 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-4">TOP {{ count($agents) }} {{ $keyword }} in {{ ucfirst($city) }}</h2>
         <div class="w-full overflow-x-auto border rounded-lg">
             <table class="w-full border-collapse">
                 <thead class="bg-gray-200">
@@ -519,7 +529,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
     @if(!empty($kwData['heading']) && !empty($kwData['courseabout']))
     <div class="border rounded-lg p-4 bg-white shadow-sm mx-4">
         <section class="bg-gray-100 border rounded-md p-6">
-            <h2 class="text-2xl md:text-3xl font-semibold text-blue-900">{{ $kwData['heading'] }}</h2>
+            <h2 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-blue-900">{{ $kwData['heading'] }}</h2>
             <div class="w-full h-[2px] bg-teal-500 mt-3 mb-5"></div>
             <div class="text-gray-800 leading-relaxed mb-5">{!! $kwData['courseabout'] !!}</div>
             <ul class="space-y-3">
@@ -581,7 +591,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
     @if(!empty($relatedCategory))
     <div class="bg-white py-10 border-t border-gray-200 mt-4">
         <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6">Related Categories in <span class="text-blue-600">{{ ucfirst($city) }}</span></h2>
+            <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">Related Categories in <span class="text-blue-600">{{ ucfirst($city) }}</span></h2>
             <div class="flex flex-wrap gap-x-8 gap-y-3 text-[15px]">
                 @foreach($relatedCategory as $slug => $name)
                 <a href="{{ route('child.show', $slug) }}" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">{{ $name }}</a>
@@ -614,7 +624,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
     {{-- Related Services --}}
     @if(!empty($servicesRelated))
     <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 mt-4 mb-4 mx-4">
-        <h2 class="text-base font-bold text-gray-900 mb-3 flex items-center gap-2">🔍 Find Services Related to {{ $keyword }}</h2>
+        <h2 class="text-lg sm:text-xl md:text-2xl font-semibold text-blue-900">🔍 Find Services Related to {{ $keyword }}</h2>
         <ul class="flex flex-wrap gap-2 text-sm text-gray-600">
             @foreach($servicesRelated as $i => $service)
             <li class="flex items-center">

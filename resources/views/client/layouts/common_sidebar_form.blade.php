@@ -252,12 +252,13 @@ try {
 
                 {{-- Age --}}
                 <div>
-                    <label class="text-[10px] font-semibold text-gray-500 mb-0.5 block">Age Range</label>
+                    <label class="text-[10px] font-semibold text-gray-500 mb-0.5 block">Age Range ff</label>
                     <select x-model="form.age" class="w-full text-xs border rounded-xl px-3 py-2 outline-none bg-white cursor-pointer focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                             :class="errors.age ? 'border-red-400 ring-2 ring-red-100' : 'border-gray-200'">
                         <option value="">Select Age Range</option>
                         @foreach(['Under 20','20 – 24','25 – 29','30 – 34','35 – 39','40 – 44','45 – 49','50 – 54','55 – 59','60+'] as $age)
-                        <option>{{ $age }}</option>
+                        <option  value="{{ $age }}"
+            {{ $age == '25 – 29' ? 'selected' : '' }}>{{ $age }}</option>
                         @endforeach
                     </select>
                     <p x-show="errors.age" x-text="errors.age" class="text-[10px] text-red-500 mt-0.5"></p>
