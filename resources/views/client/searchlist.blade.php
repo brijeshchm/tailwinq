@@ -614,7 +614,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
             @foreach($otherCities as $i => $c)
             <li class="flex items-center">
                 <a href="{{ route('city.slug', ['city_slug' => $c,
-                'service_slug' => $slug?? null
+                'service_slug' => $kwData['keyword_slug']?? null
                 ]) }}" class="hover:text-indigo-600">{{ $keyword }} in {{ ucfirst($c) }}</a>
                 @if($i !== count($otherCities) - 1)
                 <span class="mx-1 text-gray-400">|</span>

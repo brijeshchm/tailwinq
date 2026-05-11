@@ -45,7 +45,7 @@
                                             id="hero-city-search"
                                             type="text"
                                             placeholder="Search city or area..."
-                                            class="flex-1 text-xs bg-transparent outline-none text-gray-700 placeholder:text-gray-400 font-medium"
+                                            class="flex-1 text-xs bg-transparent outline-none text-gray-700   border-none placeholder:text-gray-400 font-medium"
                                             oninput="filterHeroCities(this.value)"
                                         />
                                         <button id="hero-city-clear" onclick="clearHeroCitySearch()" class="hidden text-gray-300 hover:text-gray-500 text-xs">✕</button>
@@ -200,18 +200,30 @@ setInterval(() => {
 
 // ─── Hero City ────────────────────────────────────────────────────────────
 let heroSelectedCity = 'Bangalore';
-const CITIES = ['Mumbai','Delhi','Bangalore','Hyderabad','Chennai','Pune','Kolkata','Ahmedabad'];
+// const CITIES = ['Mumbai','Delhi','Bangalore','Hyderabad','Chennai','Pune','Kolkata','Ahmedabad'];
+
+
+const CITIES = [
+    ['city' => 'Mumbai',    'cityDetails' => 'mumbai'],
+    ['city' => 'Delhi',     'cityDetails' => 'delhi'],
+    ['city' => 'Bangalore', 'cityDetails' => 'bangalore'],
+    ['city' => 'Hyderabad', 'cityDetails' => 'hyderabad'],
+    ['city' => 'Chennai',   'cityDetails' => 'chennai'],
+    ['city' => 'Pune',      'cityDetails' => 'pune'],
+    ['city' => 'Kolkata',   'cityDetails' => 'kolkata'],
+    ['city' => 'Ahmedabad', 'cityDetails' => 'ahmedabad'],
+];
 
 function renderHeroCityList(list, q = '') {
     const el = document.getElementById('hero-city-list');
     el.innerHTML = list.map(city => `
-        <button onclick="selectHeroCity('${city}')"
+        <button onclick="selectHeroCity('${city.city}')"
             class="w-full text-left px-4 py-2 text-xs transition-colors font-medium flex items-center gap-2
-                   ${city === heroSelectedCity ? 'text-blue-700 bg-blue-50' : 'text-gray-700 hover:bg-blue-50 hover:text-blue-700'}">
-            ${city === heroSelectedCity
+                   ${city.city === heroSelectedCity ? 'text-blue-700 bg-blue-50' : 'text-gray-700 hover:bg-blue-50 hover:text-blue-700'}">
+            ${city.city === heroSelectedCity
                 ? '<span class="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>'
                 : '<span class="ml-3.5"></span>'}
-            ${city}
+            ${city.cityDetails}
         </button>`).join('');
 }
 renderHeroCityList(CITIES);
@@ -234,7 +246,9 @@ function filterHeroCities(q) {
         try {
             const r = await fetch(`https://api.quickdials.com/api/website/getCityList?city=${encodeURIComponent(q)}`);
             const d = await r.json();
-            const m = (d.data ?? []).map(i => i.cityDetails);
+            // const m = (d.data ?? []).map(i => i.cityDetails);
+            const m = (d.data ?? []).map(i => ({ city: i.city, cityDetails: i.cityDetails }));
+       
             renderHeroCityList(m.length ? m : CITIES, q);
         } catch { renderHeroCityList(CITIES.filter(c => c.toLowerCase().includes(q.toLowerCase())), q); }
     }, 250);
