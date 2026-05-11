@@ -15,9 +15,9 @@
         };
         @endphp
 
-
+ 
         <a href="{{ $catUrl }}"
-           class="flex flex-col items-center gap-2 p-3 rounded-2xl border border-gray-100 hover:border-blue-200 hover:bg-blue-50/50 transition-all group text-center">
+           class="flex flex-col items-center gap-2 p-3 rounded-2xl border border-gray-100 hover:border-blue-200 hover:bg-blue-50/50 transition-all group text-center block">
             <div class="w-12 h-12 rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center">
                 <img src="{{ $cat['img'] ?? '' }}" alt="{{ $cat['title'] ?? '' }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
             </div>

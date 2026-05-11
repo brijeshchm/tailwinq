@@ -107,7 +107,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
                     <span class="text-gray-600">{{ $keyword }}</span>
                 </nav>
 
-                <h1 class="text-lg font-bold text-gray-900 leading-tight">{{ $keyword }} in {{ $area }}</h1>
+                <h1 class="text-lg font-bold text-gray-900 leading-tight">{{ $keyword }}</h1>
 
                 {{-- Rating --}}
                 <div itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating"
@@ -123,7 +123,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
 
                 <p class="text-sm text-gray-500 mt-1">
                     Showing <span class="font-semibold text-gray-800" x-text="filteredCount"></span> results for
-                    <span class="font-semibold text-blue-700">{{ $keyword }} in {{ $city }}</span>
+                    <span class="font-semibold text-blue-700">{{ $keyword }}</span>
                 </p>
             </div>
 
@@ -231,7 +231,10 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
          id="listings-wrapper">
 
         @foreach($businesses as $index => $business)
-
+        <a 
+    href="{{ route('business.details', $business['business_slug']) }}"
+    class="block"
+>
             <div class="business-card"
                  data-name="{{ strtolower($business['name'] ?? '') }}"
                  data-category="{{ strtolower(is_array($business['category'] ?? '') ? implode(',', $business['category']) : ($business['category'] ?? '')) }}"
@@ -242,7 +245,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
                  x-show="shouldShow($el)">
                 <x-business-card :business="$business" :index="$index" />
             </div>
-
+        </a>
         @endforeach
 
     </div>

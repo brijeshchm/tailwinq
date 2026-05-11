@@ -91,6 +91,7 @@ $repairItems = is_array($repairsData['data']['repairsServices']) ? $repairsData[
                 @php
                     $grad = $repairGradients[$i % count($repairGradients)];
                 @endphp
+                <a href="{{ $catUrl }}"> 
                 <div class="shrink-0 rounded-xl overflow-hidden relative group cursor-pointer border border-gray-100
                             hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
                      style="width:calc((100% - 12px) / 2.2); min-width:120px; max-width:200px;">
@@ -129,6 +130,8 @@ $repairItems = is_array($repairsData['data']['repairsServices']) ? $repairsData[
                                     scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                     </div>
                 </div>
+
+</a>
                 @endforeach
  
             </div>

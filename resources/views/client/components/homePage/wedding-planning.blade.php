@@ -37,18 +37,19 @@
                 };
                 @endphp
 
-
+ <a href="{{ $catUrl }}">
             <div class="{{ $i >= 6 ? 'hidden md:block' : '' }} cursor-pointer group flex flex-col items-center gap-1.5">
                 <div class="w-full aspect-square rounded-lg overflow-hidden border border-yellow-500/30 group-hover:border-yellow-300/70 shadow-md group-hover:shadow-yellow-500/20 group-hover:shadow-lg transition-all duration-300">
-                    <a href="{{ route('showCity', $catUrl) }}">
+                   
                         <img src="{{ $ws['img'] ?? '' }}" alt="{{ $ws['title'] ?? '' }}"
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out" loading="lazy"/>
-                    </a>
+                   
                 </div>
                 <span class="text-[9px] font-bold text-yellow-100 group-hover:text-yellow-300 text-center w-full px-0.5 transition-colors drop-shadow leading-tight line-clamp-2">
-                    <a href="{{ route('showCity', $catUrl) }}">{{ $ws['title'] ?? '' }}</a>
+                    {{ $ws['title'] ?? '' }}
                 </span>
             </div>
+            </a>
             @endforeach
         </div>
     </div>

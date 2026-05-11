@@ -249,7 +249,10 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
                 <div :class="view === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4' : 'bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden divide-y divide-gray-50'"
                      id="chunk-{{ $chunkIndex }}">
 
-				 
+				    <a 
+    href="{{ route('business.details', $chunk['business_slug']) }}"
+    class="block"
+>
                     <div class="business-card"
                          data-name="{{ strtolower($chunk['name'] ?? '') }}"
                          data-category="{{ strtolower(is_array($chunk['category'] ?? '') ? implode(',', $chunk['category']) : ($chunk['category'] ?? '')) }}"
@@ -260,7 +263,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
                          x-show="shouldShow($el)">
                         <x-business-card :business="$chunk" :index="$chunkIndex" :view="'list'" />
                     </div>
-                    
+                    </a>
                 </div>
 
                 {{-- Inline ad after every chunk except last --}}

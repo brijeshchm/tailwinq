@@ -143,33 +143,39 @@
                 'categories' => route('categories.show', $card['url'])
                 };
                 @endphp
-                    <div
-                        class="banner-card relative shrink-0 rounded-t-2xl overflow-hidden cursor-pointer group h-[140px] sm:h-[155px] {{ $colorMap[$i % count($colorMap)] }}"
-                    >
-                        <img
-                            src="{{ $card['img'] ?? '' }}"
-                            alt="{{ $card['title'] ?? '' }}"
-                            class="absolute inset-0 w-full h-full object-cover object-center opacity-50 group-hover:opacity-65 group-hover:scale-105 transition-all duration-500"
-                        />
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent"></div>
-                        <div class="relative z-10 p-3.5 flex flex-col justify-between h-full">
-                            <div>
-                                <h3 class="text-white font-black text-sm leading-tight">
-                                    <a href="{{ $catUrl }}">{{ $card['title'] ?? '' }}</a>
-                                </h3>
-                                <span class="flex items-center gap-0.5 text-[9px] text-gray-200 mt-0.5">
-                                    <span class="text-yellow-400 text-[10px]">★</span>
-                                    <span class="font-semibold">{{ $card['rating'] ?? '' }}</span>
-                                    <span class="opacity-70">({{ $card['count'] ?? '' }})</span>
-                                </span>
-                            </div>
-                            <div class="flex justify-end">
-                                <div class="w-5 h-5 rounded-full bg-white/25 flex items-center justify-center group-hover:bg-white/40 transition-colors">
-                                    <i data-lucide="chevron-right" class="w-3 h-3 text-white"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="{{ $catUrl }}"
+   title="{{ $card['title'] ?? '' }}"
+   class="banner-card relative shrink-0 rounded-t-2xl overflow-hidden cursor-pointer group h-[140px] sm:h-[155px] block {{ $colorMap[$i % count($colorMap)] }}">
+
+    <img
+        src="{{ $card['img'] ?? '' }}"
+        alt="{{ $card['title'] ?? '' }}"
+        loading="lazy"
+        class="absolute inset-0 w-full h-full object-cover object-center opacity-50 group-hover:opacity-65 group-hover:scale-105 transition-all duration-500"
+    />
+
+    <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent"></div>
+
+    <div class="relative z-10 p-3.5 flex flex-col justify-between h-full">
+        <div>
+            <h3 class="text-white font-black text-sm leading-tight">
+                {{ $card['title'] ?? '' }}
+            </h3>
+            <span class="flex items-center gap-0.5 text-[9px] text-gray-200 mt-0.5">
+                <span class="text-yellow-400 text-[10px]">★</span>
+                <span class="font-semibold">{{ $card['rating'] ?? '' }}</span>
+                <span class="opacity-70">({{ $card['count'] ?? '' }})</span>
+            </span>
+        </div>
+
+        <div class="flex justify-end">
+            <div class="w-5 h-5 rounded-full bg-white/25 flex items-center justify-center group-hover:bg-white/40 transition-colors">
+                <i data-lucide="chevron-right" class="w-3 h-3 text-white"></i>
+            </div>
+        </div>
+    </div>
+
+</a>
                 @endforeach
             </div>
 

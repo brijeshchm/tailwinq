@@ -151,7 +151,7 @@
                class="flex-1 flex items-center justify-center gap-1 sm:gap-1.5 py-1.5 sm:py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-[10px] sm:text-xs font-semibold shadow-sm shadow-emerald-200 transition-colors">
                 💬 <span>WhatsApp</span>
             </a>
-            <button onclick="openEnquiry({{ json_encode($business) }})"
+            <button onclick="document.getElementById('enquiry-modal').classList.add('open')"
                class="flex-1 relative flex items-center justify-center gap-1 sm:gap-1.5 py-1.5 sm:py-2 rounded-xl bg-violet-600 hover:bg-violet-700 text-white text-[10px] sm:text-xs font-semibold shadow-sm shadow-violet-200 transition-colors">
                 ✉ <span>Enquiry</span>
             </button>
@@ -228,8 +228,19 @@
         <div class="mt-auto pt-1 flex items-center gap-1.5">
             <a href="tel:{{ $phone }}" class="flex-1 flex items-center justify-center gap-1 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-[10px] font-semibold transition-colors">📞 Call</a>
             <a href="https://wa.me/{{ preg_replace('/\D/', '', $phone) }}" target="_blank" class="flex-1 flex items-center justify-center gap-1 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-[10px] font-semibold transition-colors">💬 WhatsApp</a>
-            <button onclick="openEnquiry({{ json_encode($business) }})" class="flex-1 flex items-center justify-center gap-1 py-1.5 rounded-xl bg-violet-600 hover:bg-violet-700 text-white text-[10px] font-semibold transition-colors">✉ Enquiry</button>
+            <button  onclick="document.getElementById('enquiry-modal').classList.add('open')" class="flex-1 flex items-center justify-center gap-1 py-1.5 rounded-xl bg-violet-600 hover:bg-violet-700 text-white text-[10px] font-semibold transition-colors">✉ Enquiry</button>
         </div>
     </div>
 </div>
+
+
+<div id="enquiry-modal" class="fixed inset-0 z-[210] hidden items-center justify-center p-4"
+     style="background:rgba(10,15,40,.75);backdrop-filter:blur(14px);"
+     onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="relative w-full max-w-md overflow-hidden" style="border-radius:1.75rem;" onclick="event.stopPropagation()">
+        @include('client.layouts.enquiry-form', ['keywordList' => $keywordList, 'planOptions' => $planOptions, 'formId' => 'modal'])
+    </div>
+</div>
+{{-- Show modal by adding .open = display:flex --}}
+<style>#enquiry-modal.open{display:flex;}</style>
 @endif

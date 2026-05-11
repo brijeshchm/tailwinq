@@ -349,7 +349,7 @@ class CitySlugController extends Controller
  
         $topDescription    = $this->replaceCity($kwData['top_description'] ?? '', $area);
         $bottomDescription = $this->replaceCity($kwData['bottom_description'] ?? '', $area);
-
+// dd($ratingCount);
         // ── FAQs ───────────────────────────────────────────────────────────
         $faqs = [];
         for ($i = 1; $i <= 6; $i++) {
