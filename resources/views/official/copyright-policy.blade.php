@@ -1,7 +1,8 @@
 @extends('client.layouts.app')
 
-@section('title', 'Copyright & Policy — QuickDials')
-@section('meta_description', 'Comprehensive copyright and intellectual property policies governing the use of QuickDials services.')
+@section('title', 'Capyright Policy Quick Dials- Local search, IT Training, Service, overseas education')
+@section('description', 'Capyright Capyright Policy Quick Dials- Local search, IT Training, Service, overseas education')
+@section('keyword', 'Capyright Capyright Policy Quick Dials- Local search, IT Training, Service, overseas education')
 
 @section('content')
 

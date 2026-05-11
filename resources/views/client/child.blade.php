@@ -1,13 +1,8 @@
 @extends('client.layouts.app')
-@section('title')
- 
-@endsection 
-@section('keyword')
- 
-@endsection
-@section('description') 
- 
-@endsection
+@section('title', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
+@section('description', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
+@section('keyword', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
+
 @section('content')	
 
 @include('client.components.banner-section')
@@ -21,7 +16,7 @@
     <div class="bg-slate-900 text-white py-12">
         <div class="container mx-auto px-4">
             <div class="flex items-center gap-2 text-slate-400 text-sm mb-3">
-                <a href="{{ config('app.url') }}" class="hover:text-white transition-colors">Home</a>
+                <a href="{{ route('home') }}" class="hover:text-white transition-colors">Home</a>
                 <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                     <path d="M9 5l7 7-7 7"/>
                 </svg>

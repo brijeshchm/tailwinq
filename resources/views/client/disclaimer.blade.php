@@ -1,13 +1,8 @@
  @extends('client.layouts.app')
-@section('title')
-QuickDials- Disclaimer
-@endsection 
-@section('keyword')
-QuickDials- Disclaimer 
-@endsection
-@section('description')
-QuickDials- Disclaimer
-@endsection
+@section('title', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
+@section('description', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
+@section('keyword', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
+
 @section('content')	
 <div class="container">
 	<h1>Disclaimer</h1>

@@ -12,7 +12,7 @@
                 <p class="text-gray-500 text-xs">Most requested services in your area.</p>
             </div>
             <div class="flex items-center gap-2">
-                <a href="{{ url('/business-services') }}" class="hidden sm:flex items-center gap-1 text-blue-600 text-xs font-semibold hover:underline mr-1">
+                <a href="{{ route('business.services') }}" class="hidden sm:flex items-center gap-1 text-blue-600 text-xs font-semibold hover:underline mr-1">
                     View All
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </a>
@@ -55,7 +55,7 @@
                     </div>
                     <div class="bg-white px-2 py-1.5 border-t border-gray-100 relative">
                         <p class="text-[11px] font-bold text-gray-800 truncate">
-                            <a href="{{ $catUrl }}">{{ $svc['title'] ?? '' }}</a>
+                            <a href="{{ route('child.show', $catUrl) }}">{{ $svc['title'] ?? '' }}</a>
                         </p>
                         <p class="text-[9px] text-blue-600 font-medium mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity">Explore →</p>
                         <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>

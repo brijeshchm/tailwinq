@@ -1,32 +1,8 @@
 @extends('client.layouts.app')
+@section('title', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
+@section('description', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
+@section('keyword', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
 
-@section('title')
-@if(!empty($child_id->meta_title))
-<?php  
-$key = preg_replace('/in {{city}}/i','',$child_id->meta_title);
-echo trim($key);  ?>
-@else
-
-Quick Dials- {!!$child_id->parent_category !!} Training in {{Request::segment(1)}} 
-@endif  
-@endsection 
-@section('keyword')
-<?php if(!empty($child_id->meta_keywords)){
-$msg = preg_replace('/in {{city}}/i',' ',$child_id->meta_keywords);
-echo trim($msg); }else{ ?>
-Quick Dials- {!!$child_id->parent_category !!} Training in {{Request::segment(1)}} 
-
-<?php  } ?>
-@endsection
-@section('description')
-<?php if(!empty($child_id->meta_description)){
-$descrip = preg_replace('/{{city}}/i',' ',$child_id->meta_description);
-echo trim($descrip); }else{ ?> 
-
-Quick Dials- {!!$child_id->parent_category !!} Training in {{Request::segment(1)}} 
-
-<?php  } ?>
-@endsection
 
 
 

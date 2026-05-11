@@ -1,17 +1,10 @@
 
 @extends('client.layouts.app')
-@section('title')
-     Privacy Policy
-@endsection
-@section('keyword')
-Quick Dials- Local search, IT Training, Playschool, overseas education
-@endsection
-@section('description')
-Quick Dials- Local search, IT Training, Playschool, overseas education
-@endsection
+@section('title', 'Careers Quick Dials- Local search, IT Training, Service, overseas education')
+@section('description', 'Careers Quick Dials- Local search, IT Training, Service, overseas education')
+@section('keyword', 'Careers Quick Dials- Local search, IT Training, Service, overseas education')
+
 @section('content') 
-
-
     <style>
         
         @keyframes fadeDown {

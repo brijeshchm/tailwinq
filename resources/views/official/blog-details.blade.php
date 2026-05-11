@@ -1,26 +1,19 @@
 @extends('client.layouts.app')
-@section('title')@if(!empty($blogdetails->meta_title)){{$blogdetails->meta_title}}@endif
-@endsection
-@section('keyword')@if (!empty($blogdetails->meta_keywords)){{$blogdetails->meta_keywords}} @endif @endsection 
-@section('description')@if(!empty($blogdetails->meta_description)){{$blogdetails->meta_description}} @endif @endsection
+ 
+@section('title',$blogDetails['meta_title'])
+@section('description', $blogDetails['meta_description'])
+@section('keyword', $blogDetails['meta_keywords'])
 @section('content')
+@include('client.components.banner-section')
  
-    @include('client.components.banner-section')
- 
-<style>
-/* ══════════════════════════════════════════
-   VARIABLES
-══════════════════════════════════════════ */
+<style> 
 :root {
     --accent:  #2563eb;
     --primary: #0f172a;
     --muted:   #64748b;
     --border:  #e2e8f0;
 }
-
-/* ══════════════════════════════════════════
-   SCROLL PROGRESS BAR
-══════════════════════════════════════════ */
+ 
 #scroll-progress {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -262,7 +255,7 @@
                 @foreach($group as $item)
                 <span class="inline-flex items-center mr-12">
                     <span class="text-blue-400 mr-2">•</span>
-                    <a href="{{ $item['url'] ?? '#' }}"
+                    <a href="{{ route('blog.details', $item['url']) }}"
                        class="hover:text-blue-300 transition-colors">
                         {{ $item['title'] ?? '' }}
                     </a>
@@ -610,7 +603,7 @@
                             $rg = $relGrads[$i % count($relGrads)];
                         @endphp
                         <div class="related-item">
-                            <a href="{{ $rel['url'] ?? '#' }}"
+                            <a href="{{ route('blog.details', $rel['url']) }}"
                                class="group flex gap-3 cursor-pointer items-start">
                                 <div class="w-16 h-16 rounded-lg shrink-0 img-zoom-wrap"
                                      style="min-width:4rem;">

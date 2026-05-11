@@ -44,6 +44,7 @@ class ClientDetailController extends Controller
  
         $data        = $response['data']         ?? [];
         $clientsList = $data['clientsList']       ?? [];
+       
         $certificate = $data['certificate']       ?? [];
         $comment     = $data['comment']           ?? [];
         $areaBusiness    = $data['area_business']     ?? [];
@@ -137,8 +138,11 @@ class ClientDetailController extends Controller
             ['day'=>'Sunday',    'hours'=>'Closed'],
         ];
  
+        $title = $clientsList['meta_title']??"";
+        $keyword = $clientsList['meta_keyword']??"";
+       $description = $clientsList['meta_description']??"";
         return view('client.client-detail', compact(
-            'slug', 'response', 'clientsList', 'certificate',
+            'slug', 'response', 'clientsList', 'certificate','title','keyword','description',
             'comment', 'areaBusiness', 'overviewBusiness',
             'relatedList', 'keywordList', 'gallery', 'hImages', 'vImages',
             'assignKeyword', 'certifications', 'govDocs', 'reviews',

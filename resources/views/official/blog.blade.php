@@ -1,15 +1,14 @@
  
 
 @extends('client.layouts.app')
-@section('title')
-     Blog  Quickdials
-@endsection
-@section('keyword')
-   Blog  Quickdials
-@endsection 
-@section('description')
-  Blog  Quickdials
-@endsection
+ 
+
+@section('title', 'Blog Quick Dials | A Local Search Engine for Businesses')
+@section('description', 'Blog Find Only Certified Training Institutes, Coaching Centers near you on quickdials and Get Free counseling, Free Demo Classes, and Get Placement Assistence.')
+@section('keyword', 'Blog Find Best It Training Centre near You, Find Best It Training Institute near You, Find Top 10 IT Training Institute near You, Find Best Entrance Exam Preparation Centre Near you, Top 10 Entrance Exam Centre Near you, Find Best Distance Education Centre Near You, Find Top 10 Distance Education Centre Near You, Find Best School And Colleges Near You, Find Top 10 school And College Near You, Get Education Loan, GET Free career Counselling, Find Best overseas education consultants Near you, Find Top 10 overseas education consultants Near you.')
+
+
+
  @section('content') 
 
      @include('client.components.banner-section')
@@ -215,7 +214,7 @@
                 @foreach($group as $item)
                 <span class="inline-flex items-center mr-12">
                     <span class="text-blue-400 mr-2">•</span>
-                    <a href="{{ $item['url'] ?? '#' }}"
+                    <a href="{{ route('blog.details', $item['url']) }}"
                        class="hover:text-blue-300 transition-colors">
                         {{ $item['title'] ?? '' }}
                     </a>
@@ -241,7 +240,7 @@
             {{-- ── FEATURED HERO ── --}}
             @if($firstBlog)
             <article class="group hero-card rounded-xl overflow-hidden bg-white shadow-sm border border-gray-200 cursor-pointer">
-                <a href="{{ $firstBlog['url'] ?? '#' }}" class="block">
+                <a href="{{ route('blog.details', $firstBlog['url']) }}" class="block">
 
                     {{-- Thumbnail / gradient fallback --}}
                     <div class="aspect-[2/1] w-full overflow-hidden relative">
@@ -331,7 +330,7 @@
                              class="article-item reveal-item group flex flex-col sm:flex-row gap-6
                                     bg-white border border-gray-200 p-4 rounded-xl cursor-pointer
                                     card-glow {{ $hidden ? 'hidden' : '' }}">
-                        <a href="{{ $article['url'] ?? '#' }}" class="contents">
+                        <a href="{{ route('blog.details', $article['url']) }}" class="contents">
                             {{-- Thumbnail --}}
                             <div class="w-full sm:w-[38%] aspect-[3/2] overflow-hidden rounded-lg shrink-0">
                                 @if(!empty($article['img']))
@@ -419,9 +418,10 @@
                         Topics
                     </h4>
                     <ul class="space-y-1">
+                        @if($categories)
                         @foreach($categories as $cat)
                         <li>
-                            <a href=""
+                            <a href="{{ route('blog.show') }}"
                                class="group flex items-center justify-between py-2 text-sm
                                       text-slate-500 hover:text-blue-600 transition-colors">
                                 <span class="flex items-center">
@@ -436,6 +436,7 @@
                             </a>
                         </li>
                         @endforeach
+                        @endif
                     </ul>
                 </div>
 
@@ -457,7 +458,7 @@
                             $pg = $popGrads[$i % count($popGrads)];
                         @endphp
                         <div class="popular-item">
-                            <a href="{{ $article['url'] ?? '#' }}"
+                            <a href="{{ route('blog.details', $article['url']) }}"
                                class="group flex gap-4 items-center cursor-pointer">
                                 {{-- Thumb --}}
                                 <div class="w-20 h-20 rounded-md overflow-hidden shrink-0">
@@ -501,16 +502,17 @@
                             <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>
                             <line x1="7" y1="7" x2="7.01" y2="7"/>
                         </svg>
-                        Tags
+                        Tags dd
                     </h4>
                     <div class="flex flex-wrap gap-2">
+                         @if($tags)
                         @foreach($tags as $tag)
-                        <a href=""
-                           class="tag-chip px-3 py-1.5 bg-slate-100 text-slate-500 text-xs font-medium
-                                  rounded-md border border-slate-200 cursor-pointer">
+                        <a href="{{ route('blog.show') }}"
+                           class=" px-3 py-1.5 bg-slate-100 text-slate-500 text-xs font-medium                                  rounded-md border border-slate-200 cursor-pointer hover:text-blue-600 transition-colors">
                             {{ $tag }}
                         </a>
                         @endforeach
+                        @endif
                     </div>
                 </div>
 

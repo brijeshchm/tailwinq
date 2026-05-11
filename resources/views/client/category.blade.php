@@ -1,13 +1,10 @@
 @extends('client.layouts.app')
-@section('title')
+@section('title', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
+@section('description', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
+@section('keyword', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
+
  
-@endsection 
-@section('keyword')
  
-@endsection
-@section('description')
- 
-@endsection
 @section('content')	
  @include('client.components.banner-section')
    
@@ -24,7 +21,7 @@
             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
             </svg>
-            <span class="text-white">All Category</span>
+            <span class="text-white">All Category dd</span>
         </div>
         <h1 class="text-4xl font-bold mb-2">Professional Courses &amp; Certifications</h1>
         <p class="text-slate-300 text-lg">Globally recognised training programmes from the world's leading institutions</p>
@@ -179,7 +176,7 @@
             >
                 <template x-for="(course, index) in filtered()" :key="course.id">
                     <a
-                        :href="course.url"
+                        :href="'{{ url('categories') }}/' + course.url"
                         class="block h-full animate-fadein"
                         :style="`animation-delay: ${index * 60}ms`"
                     >
@@ -249,7 +246,7 @@
             >
                 <template x-for="(course, idx) in filtered()" :key="course.id">
                     <a
-                        :href="course.url"
+                        :href="'{{ url('categories') }}/' + course.url"
                         class="block animate-fadein"
                         :style="`animation-delay: ${idx * 40}ms`"
                     >

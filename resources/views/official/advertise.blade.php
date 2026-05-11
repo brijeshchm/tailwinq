@@ -1,13 +1,8 @@
 @extends('client.layouts.app')
-@section('title')
-  About Quick Dials Quick Dials- Local search, IT Training, Playschool, overseas education
-@endsection 
-@section('keyword')
-Quick Dials- Local search, IT Training, Playschool, overseas education
-@endsection
-@section('description')
-Quick Dials- Local search, IT Training, Playschool, overseas education
-@endsection
+ @section('title', 'Advertise Quick Dials Quick Dials- Local search, IT Training, Playschool, overseas education.')
+@section('description', 'Advertise Quick Dials- Local search, IT Training, Playschool, overseas education.')
+@section('keyword', 'Advertise Quick Dials- Local search, IT Training, Playschool, overseas education.')
+
 @section('content')	
 
   <link href="{{asset('public/official/css/style.css')}}" rel="stylesheet">

@@ -1,14 +1,9 @@
 
 @extends('client.layouts.app')
-@section('title')
-     News
-@endsection
-@section('keyword')
-Quick Dials- Local search, IT Training, Playschool, overseas education
-@endsection
-@section('description')
-Quick Dials- Local search, IT Training, Playschool, overseas education
-@endsection
+@section('title', 'News Quick Dials- Local search, IT Training, Service, overseas education')
+@section('description', 'News Quick Dials- Local search, IT Training, Service, overseas education')
+@section('keyword', 'News Quick Dials- Local search, IT Training, Service, overseas education')
+
 @section('content') 
 <div class="about-bg page-hearder-area">
     <div class="official-overly"></div> 

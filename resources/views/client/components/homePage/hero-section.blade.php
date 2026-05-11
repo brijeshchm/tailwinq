@@ -141,7 +141,6 @@
                 'categories' => route('categories.show', $card['url'])
                 };
                 @endphp
-
                     <div
                         class="banner-card relative shrink-0 rounded-t-2xl overflow-hidden cursor-pointer group h-[140px] sm:h-[155px] {{ $colorMap[$i % count($colorMap)] }}"
                     >

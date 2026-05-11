@@ -4,4 +4,4 @@
     style="background-image: radial-gradient(circle, rgba(59,130,246,0.15) 1px, transparent 1px); background-size: 24px 24px;">
 </div>
         
-    </section>
+</section>

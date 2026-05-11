@@ -1,8 +1,7 @@
 @extends('client.layouts.app')
-
 @section('title', $metaTitle ?? $keyword )
 @section('description', $metaDescription ?? '')
-@section('keywords', $metaKeywords ?? '')
+@section('keyword', $metaKeywords ?? '')
 
 @section('content')
 {{-- In your layout <head> or @push('styles') --}}
@@ -102,7 +101,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
                     <a href="{{ route('home') }}" class="hover:text-indigo-600">Home</a>
                     <span>›</span>
                     @if($childSlug)
-                    <a href="/child/{{ $childSlug }}" class="hover:text-indigo-600">{{ $childCat }}</a>
+                    <a href="{{ route('child.show', $childSlug) }}" class="hover:text-indigo-600">{{ $childCat }}</a>
                     <span>›</span>
                     @endif
                     <span class="text-gray-600">{{ $keyword }}</span>

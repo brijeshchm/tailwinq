@@ -1,14 +1,9 @@
 
 @extends('client.layouts.app')
-@section('title')
-     Privacy Policy
-@endsection
-@section('keyword')
-Quick Dials- Local search, IT Training, Playschool, overseas education
-@endsection
-@section('description')
-Quick Dials- Local search, IT Training, Playschool, overseas education
-@endsection
+@section('title', 'Terms Conditions Quick Dials- Local search, IT Training, Service, overseas education')
+@section('description', 'Terms Conditions Dials- Local search, IT Training, Service, overseas education')
+@section('keyword', 'Terms Conditions Dials- Local search, IT Training, Service, overseas education')
+
 @section('content') 
 
  

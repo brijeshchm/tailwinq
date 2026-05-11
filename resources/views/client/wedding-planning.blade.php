@@ -1,15 +1,9 @@
 @extends('client.layouts.app')
-@section('title')
- Best Wedding Organizers in Noida for Dream Events | Quick Dials
- 	 
- 
-@endsection 
-@section('keyword')
- Wedding Organizers, Wedding Organizers in Noida, Noida Sector 16, Wedding Planners Noida, Noida Sector 16, Marriage Event near you, Wedding Management near you, Wedding Decoration, Marriage Ceremony Planners, Wedding Services
-@endsection
-@section('description')
- Looking for Wedding Organizers in Noida, Noida Sector 16? Get flawless event planning with décor, catering, themes, and venue management handled by experts near you.
-@endsection
+
+@section('title', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owner.')
+@section('description', 'Looking for Wedding Organizers in Noida, Noida Sector 16? Get flawless event planning with décor, catering, themes, and venue management handled by experts near you.')
+@section('keyword', 'Wedding Organizers, Wedding Organizers in Noida, Noida Sector 16, Wedding Planners Noida, Noida Sector 16, Marriage Event near you, Wedding Management near you, Wedding Decoration, Marriage Ceremony Planners, Wedding Services')
+
 @section('content')	 
  
 
@@ -316,7 +310,7 @@
             ['name'=>'Pandits','img'=>'https://images.unsplash.com/photo-1583939411023-14783179e581?w=400&h=400&fit=crop'],
             ['name'=>'Invitation Cards','img'=>'https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=400&h=400&fit=crop'],
         ] as $cat)
-        <a href="#" class="group block reveal">
+        <a href="{{ route('category.list') }}" class="group block reveal">
             <div class="relative h-48 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
                 <img src="{{ $cat['img'] }}" alt="{{ $cat['name'] }}"
                      class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -444,7 +438,7 @@
                     </h2>
                     <div class="w-14 h-1 bg-red-600 rounded-full mt-3"></div>
                 </div>
-                <a href="#" class="self-start md:self-auto border border-red-200 text-red-700
+                <a href="{{ route('category.list') }}" class="self-start md:self-auto border border-red-200 text-red-700
                                    hover:bg-red-600 hover:text-white rounded-full px-5 py-2
                                    text-sm flex items-center gap-2 transition-all">
                     View All Bride Services →
@@ -516,7 +510,7 @@
                     <h2 class="serif text-3xl md:text-4xl font-bold text-gray-900 mb-2">Top Venues in Mumbai</h2>
                     <p class="text-amber-800/50 max-w-xl text-sm">Discover breathtaking locations for your perfect celebration.</p>
                 </div>
-                <a href="#" class="reveal-r text-red-700 font-medium hover:underline flex items-center gap-1 text-sm">
+                <a href="{{ route('category.list') }}" class="reveal-r text-red-700 font-medium hover:underline flex items-center gap-1 text-sm">
                     View all venues →
                 </a>
             </div>
@@ -580,7 +574,7 @@
                     </h2>
                     <div class="w-14 h-1 bg-gray-800 rounded-full mt-3"></div>
                 </div>
-                <a href="#" class="self-start border border-gray-300 text-gray-800 hover:bg-gray-900 hover:text-white
+                <a href="{{ route('category.list') }}" class="self-start border border-gray-300 text-gray-800 hover:bg-gray-900 hover:text-white
                                    rounded-full px-5 py-2 text-sm flex items-center gap-2 transition-all">
                     View All Groom Services →
                 </a>

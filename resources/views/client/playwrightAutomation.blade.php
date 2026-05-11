@@ -1,23 +1,8 @@
 @extends('client.layouts.app')
-@section('title')
-<?php 
- if (!empty($keyword->meta_title)) {
-$key =  $keyword->meta_title;
-echo trim($key);
-}  
-?>
-@endsection
-@section('description')
-<?php if (!empty($keyword->meta_description)) { $descrip = $keyword->meta_description;
- echo trim($descrip); }   ?>
-@endsection
-@section('keyword')
-<?php if (!empty($keyword->meta_keywords)) { 	
-$msg = $keyword->meta_keywords; 
-$msg = preg_replace('/\s+,/', ',', $msg);
-$msg = preg_replace('/\s+/', ' ', $msg);	
-echo trim($msg); } ?>
-@endsection
+@section('title', 'Quick Dials | A Local Search Engine for Businesses')
+@section('description', 'Find Only Certified Training Institutes, Coaching Centers near you on quickdials and Get Free counseling, Free Demo Classes, and Get Placement Assistence.')
+@section('keyword', 'Find Best It Training Centre near You, Find Best It Training Institute near You, Find Top 10 IT Training Institute near You, Find Best Entrance Exam Preparation Centre Near you, Top 10 Entrance Exam Centre Near you, Find Best Distance Education Centre Near You, Find Top 10 Distance Education Centre Near You, Find Best School And Colleges Near You, Find Top 10 school And College Near You, Get Education Loan, GET Free career Counselling, Find Best overseas education consultants Near you, Find Top 10 overseas education consultants Near you.')
+ 
 
 @section('content')
 
@@ -43,7 +28,7 @@ echo trim($msg); } ?>
 	</div>
 	<?php 
 		if (!empty($keyword) ) { ?>
-	<div class="clearfix"></div>
+ 
 
 	<div class="container">
 		<div class="form-section">
@@ -135,7 +120,7 @@ echo trim($msg); } ?>
 		</div>
 
 	</div>
-	<div class="clearfix"></div>
+ 
 	<script>
 		$(document).ready(function () {
 			$('.proceedBtn').click(function () {
@@ -442,9 +427,7 @@ echo trim($msg); } ?>
 		</div>
 	</div>
 
-
-	<div class="clearfix"></div>
-	<br>
+ 
 
 	 
 		<div class="container">
@@ -916,8 +899,7 @@ A practical starting point for automation testing
 				</div></div></div>
 	@endif
 	 
-	<div class="clearfix"></div>
-	<br>
+	 
 	<?php } ?>
 	 
 
@@ -964,9 +946,6 @@ A practical starting point for automation testing
 			background: #084298;
 		}
 	</style>
-
-
-
 
 	<script type="text/javascript">
 		document.addEventListener('input', function (e) {
@@ -1267,7 +1246,7 @@ A practical starting point for automation testing
 
 							<div class="terms">
 								<input type="checkbox" name="terms" value="1" checked />
-								I agree to the Quickdials terms and conditions <a href="{{ url('terms-conditions') }}">Terms
+								I agree to the Quickdials terms and conditions <a href="{{ route('terms.conditions') }}">Terms
 									& Conditions</a>
 							</div>
 
@@ -1378,9 +1357,4 @@ A practical starting point for automation testing
 
 
 	</script>
-
-
-
-
-
 @endsection

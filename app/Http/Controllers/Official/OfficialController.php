@@ -158,11 +158,11 @@ class OfficialController extends Controller
             ['name' => 'IT Administration',    'count' => 11],
         ];
  
-        $tags = [
-            'SAP S/4HANA', 'FICO', 'ABAP', 'Python', 'AWS',
-            'Azure', 'Machine Learning', 'DevOps', 'Database', 'Security',
-        ];
- 
+        // $tags = [
+        //     'SAP S/4HANA', 'FICO', 'ABAP', 'Python', 'AWS',
+        //     'Azure', 'Machine Learning', 'DevOps', 'Database', 'Security',
+        // ];
+        $tags ="";
         return view('official.blog', compact(
             'featuredArticle',
             'firstBlog',
@@ -176,10 +176,7 @@ class OfficialController extends Controller
     }
     public function blogdetails(Request $request, $slug)
     {
-
-
-    $cacheKey = 'blog_article_' . md5($slug);
- 
+        $cacheKey = 'blog_article_' . md5($slug); 
         $data = Cache::remember($cacheKey, 3600, function () use ($slug) {
             try {
                 $response = Http::timeout(10)->withoutVerifying()
@@ -243,23 +240,7 @@ class OfficialController extends Controller
             'blogDetails','blogList','tickerItems',
             'faqs','authorColor','paragraphs','slug'
         ));
-
-        // $bloglist = Blogdetails::where('status', '1')->limit(20)->orderBy('id', 'DESC')->get();
-      
-
-
-        // $blogdetails = Blogdetails::where('blogdetails.status', '1')
-        //     ->where('blogdetails.slug', $slug)
-        //     ->leftJoin('authors', 'blogdetails.author', '=', 'authors.id')
-        //     ->select('blogdetails.*', 'authors.name as author_name','authors.image as author_image','authors.comment','authors.linkedin_url')  
-        //     ->first();
- 
-
-        // if($blogdetails){
-        //         return view('official.blog-details', ['bloglist' => $bloglist, 'blogdetails' => $blogdetails]);
-        // }else{
-        //     return response()->view('client.errorpage', [], 404);
-        // }
+         
     }
 
     public function testimonials()

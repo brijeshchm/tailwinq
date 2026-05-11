@@ -1,8 +1,9 @@
  
 @extends('client.layouts.app')
 
-@section('title', 'QuickDials – Find Local Businesses & Services')
-@section('description', 'Search across 0.9 Crore+ businesses, doctors, plumbers, hotels and services near you.')
+@section('title', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
+@section('description', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
+@section('keyword', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
 
 @section('content')
  @include('client.components.banner-section')

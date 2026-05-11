@@ -1,7 +1,7 @@
 @extends('client.layouts.app')
-@section('title', $metaTitle ?? $keyword . ' in ' . ucfirst($city))
+@section('title', $metaTitle ?? $metaTitle . ' in ' . ucfirst($city))
 @section('description', $metaDescription ?? '')
-@section('keywords', $metaKeywords ?? '')
+@section('keyword', $metaKeywords ?? '')
 
 @section('content')
 
@@ -90,8 +90,8 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
                 <p class="text-white/70 text-[10px] sm:text-sm mt-0.5 hidden sm:block">Free delivery · 100-night trial · EMI starting ₹799/mo</p>
             </div>
             <div class="flex-shrink-0 flex items-center gap-2 sm:gap-3">
-                <a href="#" class="bg-white text-indigo-700 font-bold text-xs sm:text-sm px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl hover:bg-white/90 shadow-xl whitespace-nowrap">Shop Now</a>
-                <button @click="showAd = false" class="text-white/60 hover:text-white p-1.5 sm:p-2 rounded-xl hover:bg-white/10 transition-all">✕</button>
+                
+                
             </div>
         </div>
     </div>
@@ -102,10 +102,10 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
             <div>
                 {{-- Breadcrumb --}}
                 <nav class="text-black text-xs sm:text-sm mb-1 flex items-center gap-1.5 flex-wrap">
-                    <a href="/" class="hover:text-indigo-600">Home</a>
+                    <a href="{{ route('home') }}" class="hover:text-indigo-600">Home</a>
                     <span>›</span>
                     @if($childSlug)
-                    <a href="/child/{{ $childSlug }}" class="hover:text-indigo-600">{{ $childCat }}</a>
+                    <a href="{{ route('child.show', $childSlug) }}" class="hover:text-indigo-600">{{ $childCat }}</a>
                     <span>›</span>
                     @endif
                     <span class="text-gray-600">{{ $keyword }} in {{ $area }}</span>
@@ -278,7 +278,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
                             <p class="text-white font-bold text-base sm:text-lg leading-tight">Get ₹500 Cashback on Your First Interior Design Order</p>
                             <p class="text-white/70 text-xs mt-0.5">Verified interior designers · Free consultation · 10,000+ happy homes</p>
                         </div>
-                        <a href="/business-owners" class="flex-shrink-0 bg-white text-teal-700 font-bold text-sm px-5 py-2.5 rounded-xl hover:bg-white/90 shadow-lg whitespace-nowrap">Claim Offer</a>
+                        <a href="{{ route('login') }}" class="flex-shrink-0 bg-white text-teal-700 font-bold text-sm px-5 py-2.5 rounded-xl hover:bg-white/90 shadow-lg whitespace-nowrap">Claim Offer</a>
                     </div>
                 </div>
             </div>
@@ -287,7 +287,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
             <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 mt-4">
                 <div class="flex items-center justify-between mb-5">
                     <h2 class="text-lg font-bold text-gray-900">User Reviews</h2>
-                    <a href="#" class="text-xs text-blue-600 hover:underline font-medium flex items-center gap-1">Write a Review ↗</a>
+                    
                 </div>
 
                 {{-- Rating summary --}}
@@ -399,7 +399,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
                                 <h3 class="font-semibold text-lg leading-tight mb-1 line-clamp-2">{{ $qb['name'] ?? '' }}</h3>
                                 <p class="text-gray-600 text-sm mb-4">{{ $qb['location'] ?? '' }}</p>
                                 <div class="flex gap-3">
-                                    <a href="/business-details/{{ $qb['slug'] ?? '' }}" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-xl font-medium transition-all flex items-center justify-center gap-2">
+                                    <a href="{{ route('business.details', $qb['slug']) }}" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-xl font-medium transition-all flex items-center justify-center gap-2">
                                         💬 Send Enquiry
                                     </a>
                                     <a href="https://wa.me/{{ preg_replace('/\D/', '', $qb['phone'] ?? '') }}" target="_blank"
@@ -427,7 +427,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
                             <div class="hidden md:block w-px h-10 bg-gray-400"></div>
                             <div><h3 class="text-xl font-bold text-orange-300">20000+</h3><p class="text-sm text-gray-200">Listed Businesses</p></div>
                         </div>
-                        <a href="/business-owners" class="inline-block bg-orange-500 hover:bg-orange-600 px-6 py-3 rounded-md font-semibold mb-6 transition">Add Your Business</a>
+                        <a href="{{ route('login') }}" class="inline-block bg-orange-500 hover:bg-orange-600 px-6 py-3 rounded-md font-semibold mb-6 transition">Add Your Business</a>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-gray-200">
                             <p>⚙️ Create your complete profile</p>
                             <p>⚙️ Display your service offerings</p>
@@ -584,11 +584,11 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
             <h2 class="text-2xl font-bold text-gray-900 mb-6">Related Categories in <span class="text-blue-600">{{ ucfirst($city) }}</span></h2>
             <div class="flex flex-wrap gap-x-8 gap-y-3 text-[15px]">
                 @foreach($relatedCategory as $slug => $name)
-                <a href="/child/{{ $slug }}" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">{{ $name }}</a>
+                <a href="{{ route('child.show', $slug) }}" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">{{ $name }}</a>
                 @endforeach
             </div>
             <div class="mt-8">
-                <a href="/categories" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium">View All Categories →</a>
+                <a href="{{ route('category.list') }}" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium">View All Categories →</a>
             </div>
         </div>
     </div>
@@ -600,7 +600,9 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
         <ul class="flex flex-wrap gap-2 text-sm text-gray-600">
             @foreach($otherCities as $i => $c)
             <li class="flex items-center">
-                <a href="/{{ $c }}/{{ $slug }}" class="hover:text-indigo-600">{{ $keyword }} in {{ ucfirst($c) }}</a>
+                <a href="{{ route('city.slug', ['city_slug' => $c,
+                'service_slug' => $slug?? null
+                ]) }}" class="hover:text-indigo-600">{{ $keyword }} in {{ ucfirst($c) }}</a>
                 @if($i !== count($otherCities) - 1)
                 <span class="mx-1 text-gray-400">|</span>
                 @endif
@@ -616,7 +618,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
         <ul class="flex flex-wrap gap-2 text-sm text-gray-600">
             @foreach($servicesRelated as $i => $service)
             <li class="flex items-center">
-                <a href="{{ $service['url'] ?? '#' }}" class="hover:text-indigo-600">{{ $service['title'] ?? '' }}</a>
+                <a href="{{ route('showCity', $service['url']) }}" class="hover:text-indigo-600">{{ $service['title'] ?? '' }}</a>
                 @if($i !== count($servicesRelated) - 1)
                 <span class="mx-1 text-gray-400">|</span>
                 @endif

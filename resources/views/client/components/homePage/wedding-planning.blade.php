@@ -20,7 +20,7 @@
                     <p class="text-yellow-200/60 text-[10px] leading-none mt-0.5">Everything for your perfect day</p>
                 </div>
             </div>
-            <a href="{{ url('/child/wedding-planning') }}" class="text-yellow-200 text-[10px] font-semibold hover:underline flex items-center gap-0.5">
+            <a href="{{ route('child.show', 'wedding-planning') }}" class="text-yellow-200 text-[10px] font-semibold hover:underline flex items-center gap-0.5">
                 View All
                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
@@ -40,13 +40,13 @@
 
             <div class="{{ $i >= 6 ? 'hidden md:block' : '' }} cursor-pointer group flex flex-col items-center gap-1.5">
                 <div class="w-full aspect-square rounded-lg overflow-hidden border border-yellow-500/30 group-hover:border-yellow-300/70 shadow-md group-hover:shadow-yellow-500/20 group-hover:shadow-lg transition-all duration-300">
-                    <a href="{{ $catUrl }}">
+                    <a href="{{ route('showCity', $catUrl) }}">
                         <img src="{{ $ws['img'] ?? '' }}" alt="{{ $ws['title'] ?? '' }}"
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out" loading="lazy"/>
                     </a>
                 </div>
                 <span class="text-[9px] font-bold text-yellow-100 group-hover:text-yellow-300 text-center w-full px-0.5 transition-colors drop-shadow leading-tight line-clamp-2">
-                    <a href="{{ $catUrl }}">{{ $ws['title'] ?? '' }}</a>
+                    <a href="{{ route('showCity', $catUrl) }}">{{ $ws['title'] ?? '' }}</a>
                 </span>
             </div>
             @endforeach

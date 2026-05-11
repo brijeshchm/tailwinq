@@ -42,9 +42,7 @@
 <!-- Favicon -->
 <link rel="shortcut icon" href="{{ asset('client/images/favicon.png') }}" type="image/png" />
        <!------Google Analytic Script End----->
- 
-   
-     
+      
 <script>
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

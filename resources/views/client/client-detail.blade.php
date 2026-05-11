@@ -1,13 +1,9 @@
 @extends('client.layouts.app')
-@section('title')
-	{{$clientsList['business_name']}} | Quick Dials
-@endsection
-@section('keyword')
-	{{$clientsList['business_name']}} | Quick Dials
-@endsection
-@section('description')
-	{{$clientsList['business_name']}} | Quick Dials
-@endsection
+ 
+@section('title', $title | 'Quick dials')
+@section('description', $description?? 'Quick dials')
+@section('keyword', $keyword ??'Quick dials')
+
 @section('content')
 @include('client.components.banner-section')
  <div id="scroll-progress"></div>

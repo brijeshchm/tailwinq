@@ -1,13 +1,8 @@
 @extends('client.layouts.app')
-@section('title')
- 
-@endsection 
-@section('keyword')
- 
-@endsection
-@section('description')
- 
-@endsection
+ @section('title', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
+@section('description', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
+@section('keyword', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
+
 @section('content')	
 @include('client.components.banner-section')
 

@@ -43,7 +43,7 @@ $repairItems = is_array($repairsData['data']['repairsServices']) ? $repairsData[
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <a href="{{ url('/categories/repairs-services') }}"
+                <a href="{{ route('category.list') }}"
                    class="hidden sm:block text-blue-600 text-xs font-semibold hover:underline mr-1">
                     View All
                 </a>
@@ -112,7 +112,7 @@ $repairItems = is_array($repairsData['data']['repairsServices']) ? $repairsData[
                     {{-- Card body --}}
                     <div class="p-2 bg-white relative">
                         <p class="text-[11px] font-bold text-gray-900 truncate mb-0.5">
-                            <a href="{{ url($service['url'] ?? '#') }}">{{ $service['title'] ?? '' }}</a>
+                            <a href="{{ route('showCity', $service['url']) }}">{{ $service['title'] ?? '' }}</a>
                         </p>
                         <div class="flex items-center justify-between">
                             <span class="flex items-center gap-0.5 text-[9px] text-gray-500">
