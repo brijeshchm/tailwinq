@@ -32,7 +32,7 @@
                     'links' => [
                         ['name' => 'Coaching & Tuitions',             'slug' => 'coaching-tuitions','type'=>'keyword'],
                         ['name' => 'Business Services',               'slug' => 'business-services','type'=>'keyword'],
-                        ['name' => 'Home Construction & Renovation',  'slug' => 'home-construction','type'=>'keyword'],
+                        ['name' => 'Home Construction & Renovation',  'slug' => 'home-construction','type'=>'categories'],
                         ['name' => 'Personal Finance Services',       'slug' => 'loan-service','type'=>'child'],
                         ['name' => 'Tours & Travels',                 'slug' => 'tours-travel-services','type'=>'categories'],
                         ['name' => 'Property Dealer',                 'slug' => 'property-dealer','type'=>'keyword'],
