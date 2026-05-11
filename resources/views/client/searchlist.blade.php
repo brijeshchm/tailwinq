@@ -111,7 +111,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
                     <span class="text-gray-600">{{ $keyword }} in {{ $area }}</span>
                 </nav>
 
-                <h1 class="text-lg font-bold text-gray-900 leading-tight">{{ $keyword }} in {{ $area }}</h1>
+                <h1 class="text-lg font-bold text-gray-900 leading-tight">{{ $keyword }} in {{ ucfirst($city) }}</h1>
 
                 {{-- Rating --}}
                 <div itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating"
@@ -127,7 +127,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
 
                 <p class="text-sm text-gray-500 mt-1">
                     Showing <span class="font-semibold text-gray-800" x-text="filteredCount"></span> results for
-                    <span class="font-semibold text-blue-700">{{ $keyword }} in {{ $city }}</span>
+                    <span class="font-semibold text-blue-700">{{ $keyword }} in {{ ucfirst($city) }}</span>
                 </p>
             </div>
 
