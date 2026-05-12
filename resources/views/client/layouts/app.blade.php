@@ -208,28 +208,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
 
     // ---- 5. FAQ ----
-    // if (!empty($faqs)) {
-    //     $validFaqs = collect($faqs)
-    //         ->filter(fn($f) => !empty($f['q']) && !empty($f['a']))
-    //         ->map(fn($f) => [
-    //             '@type'          => 'Question',
-    //             'name'           => $f['q'],
-    //             'acceptedAnswer' => [
-    //                 '@type' => 'Answer',
-    //                 'text'  => strip_tags($f['a']),
-    //             ],
-    //         ])
-    //         ->values()
-    //         ->all();
+    if (!empty($faqs)) {
+        $validFaqs = collect($faqs)
+            ->filter(fn($f) => !empty($f['q']) && !empty($f['a']))
+            ->map(fn($f) => [
+                '@type'          => 'Question',
+                'name'           => $f['q'],
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text'  => strip_tags($f['a']),
+                ],
+            ])
+            ->values()
+            ->all();
 
-    //     if (!empty($validFaqs)) {
-    //         $schemas[] = [
-    //             '@context'   => 'https://schema.org',
-    //             '@type'      => 'FAQPage',
-    //             'mainEntity' => $validFaqs,
-    //         ];
-    //     }
-    // }
+        if (!empty($validFaqs)) {
+            $schemas[] = [
+                '@context'   => 'https://schema.org',
+                '@type'      => 'FAQPage',
+                'mainEntity' => $validFaqs,
+            ];
+        }
+    }
 @endphp
 
 @if(!empty($schemas))
