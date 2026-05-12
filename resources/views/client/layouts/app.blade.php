@@ -128,7 +128,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         : "";
 
     $serviceDescription = 'India leading local business search & service directory | QuickDials.';
-    $cityName = ucfirst($city ?? '');
+    $cityName =$city ?? '';
     if (!empty($childCat) && !empty($childSlug)) {
         $items[] = ['name' => ucfirst($childCat), 'url' => route('child.show', $childSlug)];
     }

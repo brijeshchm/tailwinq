@@ -167,9 +167,14 @@
                         </h1>
 
                         <p class="reveal d-2 text-base text-gray-500 leading-relaxed">
-                            QuickDials was built on a simple belief: communication infrastructure should be
-                            fast, reliable, and accessible to every business — from a two-person startup to
-                            a global enterprise. We've been making that vision real since 2019.
+                            Quick Dials is a fast-growing service search and lead platform in India. It helps people find the right service providers in one place. The platform works on a simple match-making idea. Users search for a service, and Quick Dials connects them with the right providers. The website <strong class="font-bold">
+    QuickDials
+    <span class="align-super text-[10px] font-semibold">TM</span>
+</strong> makes it easy to search, compare, and contact service providers without confusion.
+                        </p>
+
+                         <p class="reveal d-2 text-base text-gray-500 leading-relaxed">
+                            Quick Dials works like a search engine for everyday services and professional needs. People use it to find trusted and verified service providers across many fields. The information on the platform is clear, updated, and easy to understand.
                         </p>
                     </div>
 
