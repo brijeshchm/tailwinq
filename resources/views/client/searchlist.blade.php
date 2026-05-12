@@ -114,6 +114,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
                 <h1 class="text-lg font-bold text-gray-900 leading-tight">{{ $keyword }} in {{ ucfirst($city) }}</h1>
 
                 {{-- Rating --}}
+                <div itemscope itemtype="https://schema.org/Product" >
                 <div itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating"
                      class="flex items-center gap-2 text-sm mt-1">
                     <img src="/client/images/{{ $starImg }}" alt="{{ $ratingValue }} star rating" class="h-4 w-auto">
@@ -123,7 +124,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
                     <span>based on</span>
                     <span itemProp="ratingCount">{{ $ratingCount }}</span>
                     <span>ratings</span>
-                </div>
+                </div></div>
 
                 <p class="text-sm text-gray-500 mt-1">
                     Showing <span class="font-semibold text-gray-800" x-text="filteredCount"></span> results for
@@ -249,10 +250,10 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
                 <div :class="view === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4' : 'bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden divide-y divide-gray-50'"
                      id="chunk-{{ $chunkIndex }}">
 
-				    <a 
-    href="{{ route('business.details', $chunk['business_slug']) }}"
-    class="block"
->
+                    <a 
+                        href="{{ route('business.details', $chunk['business_slug']) }}"
+                        class="block"
+                    >
                     <div class="business-card"
                          data-name="{{ strtolower($chunk['name'] ?? '') }}"
                          data-category="{{ strtolower(is_array($chunk['category'] ?? '') ? implode(',', $chunk['category']) : ($chunk['category'] ?? '')) }}"
