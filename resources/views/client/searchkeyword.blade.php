@@ -109,17 +109,53 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
 
                 <h1 class="text-lg font-bold text-gray-900 leading-tight">{{ $keyword }}</h1>
 
-                {{-- Rating --}}
-                <div itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating"
-                     class="flex items-center gap-2 text-sm mt-1">
-                    <img src="/client/images/{{ $starImg }}" alt="{{ $ratingValue }} star rating" class="h-4 w-auto">
-                    <span itemProp="ratingValue">{{ $ratingValue }}</span>
-                    <span>out of</span>
-                    <span itemProp="bestRating">5</span>
-                    <span>based on</span>
-                    <span itemProp="ratingCount">{{ $ratingCount }}</span>
-                    <span>ratings</span>
-                </div>
+                 {{-- Rating --}}
+                
+
+                  <div itemscope itemtype="https://schema.org/Product" class="space-y-2">
+
+    {{-- Required: Product Name --}}
+    <meta itemprop="name" content="{{ $productName ?? $serviceName ?? 'QuickDials Service' }}">
+
+    {{-- Required: Product Image --}}
+    @if(!empty($kwData['key_icon']))
+        <meta itemprop="image" content="{{ $kwData['key_icon'] ?? $kwData['child_icon'] ??'' }}">
+    @endif
+
+    {{-- Optional: Description --}}
+    @if(!empty($metaDescription))
+        <meta itemprop="description" content="{{ $metaDescription }}">
+    @endif
+
+    {{-- Aggregate Rating --}}
+    <div itemprop="aggregateRating"
+         itemscope
+         itemtype="https://schema.org/AggregateRating"
+         class="flex items-center gap-2 text-sm">
+
+        <img src="{{ asset('client/images/' . $starImg) }}"
+             alt="{{ $ratingValue }} out of 5 stars"
+             class="h-4 w-auto"
+             width="80"
+             height="16"
+             loading="lazy">
+
+        <span class="font-semibold text-gray-900">
+            <span itemprop="ratingValue">{{ $ratingValue }}</span>
+        </span>
+
+        <span class="text-gray-500">out of</span>
+
+        <span itemprop="bestRating">5</span>
+
+        <span class="text-gray-500">based on</span>
+
+        <span itemprop="ratingCount">{{ $ratingCount }}</span>
+
+        <span class="text-gray-500">ratings</span>
+    </div>
+</div>
+
 
                 <p class="text-sm text-gray-500 mt-1">
                     Showing <span class="font-semibold text-gray-800" x-text="filteredCount"></span> results for
