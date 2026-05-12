@@ -212,11 +212,11 @@
             @endforeach
         </div>
  
-        <div class="mt-7 text-center">
+        <!-- <div class="mt-7 text-center">
             <button class="px-6 py-2 rounded-full border border-gray-200 text-gray-600 hover:bg-gray-50 font-semibold text-sm transition-colors">
                 Load More Businesses
             </button>
-        </div>
+        </div> -->
     </div>
 </section>
  
