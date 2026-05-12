@@ -132,12 +132,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (!empty($childCat) && !empty($childSlug)) {
         $items[] = ['name' => ucfirst($childCat), 'url' => route('child.show', $childSlug)];
     }
-
+    $items =[];
+    if(request()->segment(1)){
+    $items[] = ['name' => request()->segment(1), 'url' => url()->current()];
+    }
     if (!empty($keyword)) {
         $items[] = ['name' => $keyword, 'url' => url()->current()];
-    }else{
-     $items[] = ['name' => request()->segment(1), 'url' => url()->current()];
-    }
+    } 
 
     $breadcrumbs = array_merge(
         [['name' => 'Home', 'url' => url('/')]],
