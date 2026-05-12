@@ -133,9 +133,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         $items[] = ['name' => ucfirst($childCat), 'url' => route('child.show', $childSlug)];
     }
     $items =[];
-    if(request()->segment(1)){
-    $items[] = ['name' => request()->segment(1), 'url' => url()->current()];
-    }
+    // if(request()->segment(1)){
+    // $items[] = ['name' => request()->segment(1), 'url' => url()->current()];
+    // }
     if (!empty($keyword)) {
         $items[] = ['name' => $keyword, 'url' => url()->current()];
     } 
