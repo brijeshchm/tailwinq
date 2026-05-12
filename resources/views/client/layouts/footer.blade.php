@@ -147,7 +147,7 @@
                         ['name' => 'Careers',                   'href' => '/careers','route'=>route('careers')],
                         ['name' => 'Blog',                      'href' => '/blog','route'=>route('blog.show')],
                         ['name' => 'Pricing',                   'href' => '/pricing','route'=>route('pricing')],
-                        ['name' => 'Advertise on QuickDials',   'href' => '/business-owners','route'=>route('login')],
+                      //  ['name' => 'Advertise on QuickDials',   'href' => '/business-owners','route'=>route('login')],
                         ['name' => 'Privacy Policy',            'href' => '/privacy-policy','route'=>route('privacy.policy')],
                         ['name' => 'Terms of Service',          'href' => '/terms-conditions','route'=>route('terms.conditions')],
                         ['name' => 'Copyright Policy',          'href' => '/copyright-policy','route'=>route('copyright.policy')],
