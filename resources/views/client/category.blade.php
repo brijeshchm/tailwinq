@@ -2,18 +2,12 @@
 @section('title', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
 @section('description', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
 @section('keyword', 'Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners')
-
- 
  
 @section('content')	
  @include('client.components.banner-section')
    
+
  
- 
- 
-{{-- =====================================================================
-     PAGE HEADER
-====================================================================== --}}
 <div class="bg-slate-900 text-white py-12">
     <div class="container mx-auto px-4">
         <div class="flex items-center gap-2 text-slate-400 text-sm mb-3">
@@ -21,7 +15,7 @@
             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
             </svg>
-            <span class="text-white">All Category dd</span>
+            <span class="text-white">All Category</span>
         </div>
         <h1 class="text-4xl font-bold mb-2">Professional Courses &amp; Certifications</h1>
         <p class="text-slate-300 text-lg">Globally recognised training programmes from the world's leading institutions</p>

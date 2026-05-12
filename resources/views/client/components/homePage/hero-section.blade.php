@@ -202,17 +202,12 @@ setInterval(() => {
 let heroSelectedCity = 'Bangalore';
 // const CITIES = ['Mumbai','Delhi','Bangalore','Hyderabad','Chennai','Pune','Kolkata','Ahmedabad'];
 
+const cityNames = ['Mumbai', 'Delhi', 'Bangalore', 'Hyderabad', 'Chennai', 'Pune', 'Kolkata', 'Ahmedabad'];
 
-const CITIES = [
-    ['city' => 'Mumbai',    'cityDetails' => 'mumbai'],
-    ['city' => 'Delhi',     'cityDetails' => 'delhi'],
-    ['city' => 'Bangalore', 'cityDetails' => 'bangalore'],
-    ['city' => 'Hyderabad', 'cityDetails' => 'hyderabad'],
-    ['city' => 'Chennai',   'cityDetails' => 'chennai'],
-    ['city' => 'Pune',      'cityDetails' => 'pune'],
-    ['city' => 'Kolkata',   'cityDetails' => 'kolkata'],
-    ['city' => 'Ahmedabad', 'cityDetails' => 'ahmedabad'],
-];
+const CITIES = cityNames.map(name => ({
+    city: name.toLowerCase(),
+    cityDetails: name
+}));
 
 function renderHeroCityList(list, q = '') {
     const el = document.getElementById('hero-city-list');

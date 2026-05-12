@@ -68,7 +68,7 @@
                 <div class="flex-1 min-w-0">
                     <div class="flex items-center gap-1.5 flex-wrap">
                         <h3 class="font-bold text-gray-900 text-[13px] sm:text-[15px] leading-tight group-hover:text-indigo-600 transition-colors">
-                            <a href="{{ route('business.details', $slug) }}">{{ $name }}</a>
+                            <a href="{{ route('business.details', $business['business_slug']) }}">{{ $name }}</a>
                         </h3>
                         @if($verified)
                         <span class="flex items-center gap-0.5 text-[9px] sm:text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full border border-emerald-100">
@@ -155,7 +155,7 @@
                class="flex-1 relative flex items-center justify-center gap-1 sm:gap-1.5 py-1.5 sm:py-2 rounded-xl bg-violet-600 hover:bg-violet-700 text-white text-[10px] sm:text-xs font-semibold shadow-sm shadow-violet-200 transition-colors">
                 ✉ <span>Enquiry</span>
             </button>
-            <a href="{{ route('business.details', $slug) }}" target="_blank" rel="noopener noreferrer"
+            <a href="{{ route('business.details', $business['business_slug']) }}" target="_blank" rel="noopener noreferrer"
                class="flex-1 flex items-center justify-center gap-1 sm:gap-1.5 py-1.5 sm:py-2 rounded-xl bg-sky-500 hover:bg-sky-600 text-white text-[10px] sm:text-xs font-semibold shadow-sm shadow-sky-200 transition-colors">
                 🗺 <span>View</span>
             </a>
@@ -190,7 +190,7 @@
         </div>
 
         <h3 class="font-bold text-gray-900 text-sm group-hover:text-indigo-600 transition-colors mb-0.5">
-            <a href="{{ route('business.details', $slug) }}">{{ $name }}</a>
+            <a href="{{ route('business.details', $business['business_slug']) }}">{{ $name }}</a>
         </h3>
         <p class="text-[11px] text-gray-400 mb-3">{{ implode(', ', array_slice($category, 0, 2)) }}</p>
 

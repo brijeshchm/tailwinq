@@ -231,10 +231,8 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
          id="listings-wrapper">
 
         @foreach($businesses as $index => $business)
-        <a 
-    href="{{ route('business.details', $business['business_slug']) }}"
-    class="block"
->
+
+         
             <div class="business-card"
                  data-name="{{ strtolower($business['name'] ?? '') }}"
                  data-category="{{ strtolower(is_array($business['category'] ?? '') ? implode(',', $business['category']) : ($business['category'] ?? '')) }}"
@@ -245,7 +243,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
                  x-show="shouldShow($el)">
                 <x-business-card :business="$business" :index="$index" />
             </div>
-        </a>
+         
         @endforeach
 
     </div>

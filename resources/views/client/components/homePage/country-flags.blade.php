@@ -36,7 +36,7 @@
         if (!cities.length) { tabBar.innerHTML = '<p class="text-xs text-gray-400 px-4 py-2">No cities available</p>'; return; }
  
         activeCitySlug = cities[0]?.city || '';
- console.log('activeCitySlug',activeCitySlug);
+ 
         // Render tabs
         tabBar.innerHTML = cities.map((city, i) => `
             <button onclick="switchCityTab(${i}, '${city.city}')"
@@ -73,8 +73,7 @@
             allKeywords.map((kw, i) =>
                 `<span><a href="/${slug}/${kw.slug}" class="hover:text-blue-600 transition-colors">${kw.keyword}</a>${i < allKeywords.length - 1 ? '<span class="mx-1.5 text-gray-300">|</span>' : ''}</span>`
             ).join('') + '</p>';
-    }
- 
+    } 
 
 })();
 </script>

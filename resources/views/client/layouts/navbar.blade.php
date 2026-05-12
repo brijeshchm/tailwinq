@@ -286,7 +286,15 @@ window.addEventListener('scroll', () => {
 
 // ─── Sticky City Dropdown ──────────────────────────────────────────────────
 let stickySelectedCity = 'Bangalore';
-const FALLBACK_CITIES = ['Mumbai','Delhi','Bangalore','Hyderabad','Chennai','Pune','Kolkata','Ahmedabad'];
+ 
+
+const cityStickyNames = ['Mumbai', 'Delhi', 'Bangalore', 'Hyderabad', 'Chennai', 'Pune', 'Kolkata', 'Ahmedabad'];
+
+const FALLBACK_CITIES = cityStickyNames.map(name => ({
+    city: name.toLowerCase(),
+    cityDetails: name
+}));
+
 
 function toggleStickyCity() {
     const panel   = document.getElementById('sticky-city-panel');
@@ -296,18 +304,38 @@ function toggleStickyCity() {
     chevron.style.transform = isHidden ? 'rotate(180deg)' : '';
 }
 
-function filterStickyCities(q) {
-    const clearBtn = document.getElementById('sticky-city-clear');
+function renderStickyCityList(list, q = '') {
+     const clearBtn = document.getElementById('sticky-city-clear');
     clearBtn.classList.toggle('hidden', !q);
-    const list = document.getElementById('sticky-city-list');
-    const filtered = FALLBACK_CITIES.filter(c => c.toLowerCase().includes(q.toLowerCase()));
-    list.innerHTML = filtered.map(city => `
-        <button onclick="selectStickyCity('${city}')"
+    const el = document.getElementById('sticky-city-list');
+    el.innerHTML = list.map(city => `
+        <button onclick="selectStickyCity('${city.city}')"
             class="w-full text-left px-4 py-2 text-xs transition-colors font-medium flex items-center gap-2
-                   ${city === stickySelectedCity ? 'text-blue-700 bg-blue-50' : 'text-gray-700 hover:bg-blue-50 hover:text-blue-700'}">
-            ${city === stickySelectedCity ? '<span class="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>' : '<span class="ml-3.5"></span>'}
-            ${city}
+                   ${city.city === stickySelectedCity ? 'text-blue-700 bg-blue-50' : 'text-gray-700 hover:bg-blue-50 hover:text-blue-700'}">
+            ${city.city === stickySelectedCity
+                ? '<span class="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>'
+                : '<span class="ml-3.5"></span>'}
+            ${city.cityDetails}
         </button>`).join('');
+}
+
+
+renderStickyCityList(FALLBACK_CITIES);
+let stickyCityTimeout = null;
+function filterStickyCities(q) {
+    document.getElementById('sticky-city-clear').classList.toggle('hidden', !q);
+    clearTimeout(stickyCityTimeout);
+    if (q.length < 1) { renderStickyCityList(FALLBACK_CITIES); return; }
+    stickyCityTimeout = setTimeout(async () => {
+        try {
+            const r = await fetch(`https://api.quickdials.com/api/website/getCityList?city=${encodeURIComponent(q)}`);
+            const d = await r.json();
+            // const m = (d.data ?? []).map(i => i.cityDetails);
+            const m = (d.data ?? []).map(i => ({ city: i.city, cityDetails: i.cityDetails }));
+       
+            renderStickyCityList(m.length ? m : CITIES, q);
+        } catch { renderStickyCityList(CITIES.filter(c => c.toLowerCase().includes(q.toLowerCase())), q); }
+    }, 250);
 }
 
 function clearStickyCitySearch() {
