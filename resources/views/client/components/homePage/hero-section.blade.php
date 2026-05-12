@@ -445,5 +445,9 @@ function redirectSearch(keyword, city) {
     document.getElementById('banner-slider-wrapper').addEventListener('mouseenter', () => window.sliderPaused = true);
     document.getElementById('banner-slider-wrapper').addEventListener('mouseleave', () => window.sliderPaused = false);
 })();
+
+
+
+
 </script>
  

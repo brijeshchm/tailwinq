@@ -312,7 +312,7 @@
                                     <div class="relative">
                                         <i data-lucide="mail" class="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 pointer-events-none"></i>
                                         <input type="email" name="email" value="{{ old('email') }}"
-                                               placeholder="you@company.com"
+                                               placeholder="Enter Email"
                                                class="form-input w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:border-slate-300 text-sm @error('email') border-red-400 @enderror">
                                     </div>
                                     @error('email')<p class="text-red-500 text-[10px] mt-0.5">{{ $message }}</p>@enderror
@@ -322,7 +322,7 @@
                                     <div class="relative">
                                         <i data-lucide="phone" class="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 pointer-events-none"></i>
                                         <input type="text" name="phone" value="{{ old('phone') }}"
-                                               placeholder="+91 98765 43210"
+                                               placeholder="Enter Phone"
                                                class="form-input w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:border-slate-300 text-sm @error('phone') border-red-400 @enderror">
                                     </div>
                                     @error('phone')<p class="text-red-500 text-[10px] mt-0.5">{{ $message }}</p>@enderror

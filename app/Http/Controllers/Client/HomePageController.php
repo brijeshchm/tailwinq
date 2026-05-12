@@ -231,9 +231,6 @@ class HomePageController extends Controller
 	public function saveEnquiryWithoutZone(Request $request)
 	{
  
- 
-		if ($request->ajax()) {
-
 			$validator = Validator::make($request->all(), [
 				'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:32',
 				'email' => 'required|regex:/^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i',
@@ -257,6 +254,7 @@ class HomePageController extends Controller
 			$lead->name = $name;
 			$lead->email = $request->input('email');
 			$lead->lead_form = $request->input('lead_form');
+			$lead->plan = $request->input('plan');
 			$lead->from_page = filter_var($request->input('from_page'), FILTER_SANITIZE_STRING);
 
 			$citySlug = $request->input('city_id');
@@ -364,7 +362,6 @@ class HomePageController extends Controller
 					$followUp->status = Status::where('name', 'LIKE', 'New Lead')->first()->id;
 					$followUp->remark = htmlspecialchars(strip_tags(trim($request->input('comment'))));
 					$followUp->expected_date_time = date('Y-m-d H:i:s');
-
 					$followUp->lead_id = $lead->id;
 					//$followUp->remark_by =Auth::user()->id;
 					$followUp->save();
@@ -411,7 +408,7 @@ class HomePageController extends Controller
 					], 200);
 				}
 			}
-		}
+		
 	}
 
 

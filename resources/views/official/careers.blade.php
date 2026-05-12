@@ -226,7 +226,7 @@
 
                 <div>
                     <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Mobile</label>
-                    <input x-model="form.mobile" type="tel" placeholder="+91 98765 43210" required
+                    <input x-model="form.mobile" type="tel" placeholder="Enter Phone" required
                            class="input-focus w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 placeholder-gray-300" />
                 </div>
 

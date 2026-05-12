@@ -39,21 +39,21 @@
                     <label class="text-xs font-semibold text-gray-500 mb-1 block">Full Name *</label>
                     <div class="relative">
                         <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">👤</span>
-                        <input type="text" name="name_{{ $formId }}" placeholder="John Doe" class="ef-input" required>
+                        <input type="text" name="name" placeholder="Enter Name" class="ef-input" required>
                     </div>
                 </div>
                 <div>
                     <label class="text-xs font-semibold text-gray-500 mb-1 block">Email Address *</label>
                     <div class="relative">
                         <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">✉️</span>
-                        <input type="email" name="email_{{ $formId }}" placeholder="john@example.com" class="ef-input" required>
+                        <input type="email" name="email" placeholder="john@example.com" class="ef-input" required>
                     </div>
                 </div>
                 <div>
                     <label class="text-xs font-semibold text-gray-500 mb-1 block">Mobile Number *</label>
                     <div class="relative">
                         <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">📞</span>
-                        <input type="tel" name="phone_{{ $formId }}" placeholder="+91 98765 43210" class="ef-input" required>
+                        <input type="tel" name="phone" placeholder="Enter Phone no" class="ef-input" required>
                     </div>
                 </div>
                 <button data-next class="w-full py-3 mt-2 rounded-xl font-bold text-white text-sm" style="background:#2563eb;">
@@ -68,7 +68,7 @@
             <div class="space-y-3">
                 <div>
                     <label class="text-xs font-semibold text-gray-500 mb-1 block">Service *</label>
-                    <select name="service_{{ $formId }}" class="ef-input">
+                    <select name="kw_text" class="ef-input">
                         <option value="">Select a service…</option>
                         @foreach($keywordList as $kw)
                         <option value="{{ $kw['slug'] ?? '' }}">{{ $kw['keyword'] ?? $kw }}</option>
@@ -77,11 +77,11 @@
                 </div>
                 <div>
                     <label class="text-xs font-semibold text-gray-500 mb-1 block">Preferred Date *</label>
-                    <input type="date" name="date_{{ $formId }}" class="ef-input" style="padding-left:1rem;">
+                    <input type="date" name="date" class="ef-input" style="padding-left:1rem;">
                 </div>
                 <div>
                     <label class="text-xs font-semibold text-gray-500 mb-1 block">When do you want to Start?</label>
-                    <select name="plan_{{ $formId }}" class="ef-input">
+                    <select name="plan" class="ef-input">
                         @foreach($planOptions as $plan)
                         <option value="{{ $plan }}">{{ $plan }}</option>
                         @endforeach
@@ -100,7 +100,7 @@
             <div class="space-y-3">
                 <div>
                     <label class="text-xs font-semibold text-gray-500 mb-1 block">Message (optional)</label>
-                    <textarea name="message_{{ $formId }}" rows="3" placeholder="Any special requests or questions…"
+                    <textarea name="comment" rows="3" placeholder="Any special requests or questions…"
                               class="ef-input resize-none" style="padding-left:1rem;"></textarea>
                 </div>
                 <div class="flex gap-2 mt-2">
@@ -144,3 +144,5 @@
 
     </div>
 </div>
+
+

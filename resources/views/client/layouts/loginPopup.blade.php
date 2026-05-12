@@ -63,7 +63,7 @@
                             x-model="email"
                             @keydown.enter="sendOtp()"
                             @input="emailError = ''"
-                            placeholder="you@example.com"
+                            placeholder="Enter Email"
                             autocomplete="email"
                             class="flex-1 px-3 py-3 text-sm text-gray-800 placeholder-gray-400 bg-transparent outline-none"
                         />

@@ -233,14 +233,8 @@
     </div>
 </div>
 
-
-<div id="enquiry-modal" class="fixed inset-0 z-[210] hidden items-center justify-center p-4"
-     style="background:rgba(10,15,40,.75);backdrop-filter:blur(14px);"
-     onclick="if(event.target===this)this.classList.remove('open')">
-    <div class="relative w-full max-w-md overflow-hidden" style="border-radius:1.75rem;" onclick="event.stopPropagation()">
-        @include('client.layouts.enquiry-form', ['keywordList' => $keywordList, 'planOptions' => $planOptions, 'formId' => 'modal'])
-    </div>
-</div>
-{{-- Show modal by adding .open = display:flex --}}
-<style>#enquiry-modal.open{display:flex;}</style>
+  
 @endif
+
+ 
+

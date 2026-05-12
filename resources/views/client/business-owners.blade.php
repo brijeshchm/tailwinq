@@ -465,7 +465,7 @@ select.form-input { padding-left:1rem; }
                                         <label class="block text-xs font-semibold text-slate-600 mb-1">Email</label>
                                         <div class="relative">
                                             <svg class="field-icon absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                                            <input name="email" type="email" placeholder="you@company.com"
+                                            <input name="email" type="email" placeholder="Enter Email"
                                                    class="form-input" required />
                                         </div>
                                         <p class="field-error text-red-500 text-[10px] mt-0.5 hidden"></p>

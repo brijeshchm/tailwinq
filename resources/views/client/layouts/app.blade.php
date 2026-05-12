@@ -256,7 +256,63 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     @include('client.layouts.footer')
  
+<script>
+    
 
+// ─── Auto Detect City by Location ─────────────────────────────────────────
+function applyDetectedCity(cityName) {
+    if (!cityName) return;
+    const formatted = cityName
+        .split('-')
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(' ');
+    const lower = formatted.toLowerCase();
+
+    heroSelectedCity = lower;
+
+    // Update all city labels
+    ['hero-city-label', 'sticky-city-label', 'mobile-city-label'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = formatted;
+    });
+
+    // Re-render city list with new selection highlighted
+    renderHeroCityList(CITIES);
+}
+
+function detectCityFromIP() {
+    fetch('https://ipapi.co/json/')
+        .then(res => res.json())
+        .then(data => {
+            if (data.city) applyDetectedCity(data.city);
+        })
+        .catch(() => {
+            // Keep default city (Bangalore) if all fails
+        });
+}
+
+function detectCityFromCoords(lat, lng) {
+  
+    fetch(`https://ipapi.co/json/`)
+        .then(res => res.json())
+        .then(data => {
+            if (data.city) applyDetectedCity(data.city);
+        })
+        .catch(() => detectCityFromIP());
+}
+
+// ─── Start detection ───────────────────────────────────────────────────────
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+        position => detectCityFromCoords(position.coords.latitude, position.coords.longitude),
+        error    => detectCityFromIP(),   // denied or error → fallback to IP
+        { timeout: 5000 }
+    );
+} else {
+    detectCityFromIP();
+}
+ 
+</script>
  
 </body>
 </html>

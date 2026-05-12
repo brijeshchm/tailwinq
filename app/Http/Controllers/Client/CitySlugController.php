@@ -259,17 +259,18 @@ class CitySlugController extends Controller
 
         // ── Businesses ─────────────────────────────────────────────────────
         $rawList    = $data['clientsList'] ?? [];
+        $agents    = $data['agents'] ?? [];
         $businesses = collect($rawList)
             ->map(fn ($b, $i) => $this->normalizeBusiness($b, $i))
             ->all();
 
 
-            // dd($businesses);
+            // dd($agents);
         // ── Agents comparison table ────────────────────────────────────────
-        $agents = collect($rawList)
+        $agents = collect($agents)
             ->map(fn ($b) => $this->normalizeAgent($b))
             ->all();
-
+ 
         // ── Reviews ────────────────────────────────────────────────────────
         $reviews = $data['reviewList'] ?? [];
 
@@ -287,17 +288,10 @@ class CitySlugController extends Controller
 
         // ── Chunk businesses for ad insertion every 5 ─────────────────────
         $businessChunks = array_chunk($businesses, 5);
-
-    
-
         $quickBusinesses = $data['quickBusinesses'] ?? [];
-            
-
-
         $responseZones = $this->fetchCityData($city);
-         $zones     = $responseZones['data'] ?? [];
-
-// dd($zones);
+        $zones     = $responseZones['data'] ?? [];
+ 
         return view('client.searchlist ', compact(
             'city', 'slug', 'keyword', 'area','zones',
             'childSlug', 'childCat',
@@ -360,6 +354,7 @@ class CitySlugController extends Controller
 
         // ── Businesses ─────────────────────────────────────────────────────
         $rawList    = $data['clientsList'] ?? [];
+        $agents    = $data['agents'] ?? [];
         $businesses = collect($rawList)
             ->map(fn ($b, $i) => $this->normalizeBusiness($b, $i))
             ->all();
@@ -367,7 +362,7 @@ class CitySlugController extends Controller
 
             // dd($businesses);
         // ── Agents comparison table ────────────────────────────────────────
-        $agents = collect($rawList)
+        $agents = collect($agents)
             ->map(fn ($b) => $this->normalizeAgent($b))
             ->all();
 

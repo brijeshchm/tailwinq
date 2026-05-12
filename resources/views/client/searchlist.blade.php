@@ -72,8 +72,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
 <div class="min-h-screen bg-gray-50 flex flex-col mt-4"
      x-data="listingPage()" x-init="init()">
 
-    {{-- Enquiry Modal --}}
-    @include('client.components.enquiry-modal')
+  
 
     {{-- Hero Banner --}}
     <div x-show="showAd" x-cloak
@@ -125,6 +124,7 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
                     <span itemProp="ratingCount">{{ $ratingCount }}</span>
                     <span>ratings</span>
                 </div></div> -->
+
 
 
 
@@ -763,5 +763,27 @@ function listingPage() {
 </script>
   
 
+{{-- Modal: REMOVED `hidden`, controlled fully by CSS --}}
+<div id="enquiry-modal"
+     class="fixed inset-0 z-[210] items-center justify-center p-4"
+     style="background:rgba(10,15,40,.75);backdrop-filter:blur(14px);"
+     onclick="if(event.target===this)this.classList.remove('open')">
+
+    <div class="relative w-full max-w-md overflow-hidden"
+         style="border-radius:1.75rem;"
+         onclick="event.stopPropagation()">
+        @include('client.layouts.enquiry-popup-form', [
+            'keywordList' => $keyword,
+            'planOptions' => '',
+            'formId' => 'modal'
+        ])
+    </div>
+</div>
+
+<style>
+    #enquiry-modal { display: none; }
+    #enquiry-modal.open { display: flex; }
+    body.modal-open { overflow: hidden; }
+</style>
 
 @endsection

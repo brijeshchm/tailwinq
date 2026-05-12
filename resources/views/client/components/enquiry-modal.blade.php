@@ -129,7 +129,7 @@
                 <div x-show="!showSuccess && step === 0" style="display:none" class="space-y-3">
                     <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Step 1 — Your Details</p>
 
-                    @foreach([['name','Full Name','Your full name','text','👤'],['email','Email','you@example.com','email','✉️'],['phone','Phone','+91 00000 00000','tel','📞']] as [$f,$lbl,$ph,$t,$ico])
+                    @foreach([['name','Full Name','Your full name','text','👤'],['email','Email','Enter Email','email','✉️'],['phone','Phone','Enter Phone','tel','📞']] as [$f,$lbl,$ph,$t,$ico])
                     <div>
                         <label class="text-xs font-semibold text-gray-600 mb-1 block">{{ $lbl }}</label>
                         <div class="relative">

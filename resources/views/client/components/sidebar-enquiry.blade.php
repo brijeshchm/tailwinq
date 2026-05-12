@@ -30,7 +30,7 @@
         <div class="relative bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700 px-4 pt-3 pb-3 overflow-hidden">
             <div class="flex items-center gap-2.5 mb-1">
                 <div class="w-8 h-8 bg-white/20 rounded-xl flex items-center justify-center border border-white/30">⚡</div>
-                <h2 class="text-white font-bold text-base">Quick Enquiry side</h2>
+                <h2 class="text-white font-bold text-base">Quick Enquiry</h2>
             </div>
             <p class="text-white/70 text-xs mb-2">We'll connect you with the best vendors instantly.</p>
 
@@ -127,7 +127,7 @@
                                 <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
                             </svg>
                         </span>
-                        <input type="email" x-model="form.email" placeholder="you@example.com"
+                        <input type="email" x-model="form.email" placeholder="Enter Email"
                                class="w-full text-xs border rounded-lg pl-7 pr-3 py-1.5 outline-none transition-all placeholder-gray-400 bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                                :class="errors.email ? 'border-red-400 ring-2 ring-red-100' : 'border-gray-200'">
                     </div>
@@ -143,7 +143,7 @@
                                 <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
                             </svg>
                         </span>
-                        <input type="tel" x-model="form.phone" placeholder="+91 00000 00000"
+                        <input type="tel" x-model="form.phone" placeholder="Enter Phone"
                                class="w-full text-xs border rounded-lg pl-7 pr-3 py-1.5 outline-none transition-all placeholder-gray-400 bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                                :class="errors.phone ? 'border-red-400 ring-2 ring-red-100' : 'border-gray-200'">
                     </div>
@@ -167,8 +167,7 @@
             <div x-show="step === 1 && !showSuccess" x-cloak class="space-y-2.5">
                 <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Step 2 — Preferences</p>
 
-                {{-- Location --}}
-
+            
                  
 
                 {{-- Location --}}
@@ -297,7 +296,7 @@ function sidebarEnquiry(tracking = {}, zones = []) {
         name: '', email: '', phone: '',
         location: '',          // display name shown in input
         location_slug: '',     // clean slug for DB / attribution
-        location_id: null,     // optional zone FK
+        location: null,     // optional zone FK
         age: '', whenToStart: '', comment: '',
         website: '',           // honeypot
         kw_text:   tracking.kw_text   || '',
@@ -333,7 +332,7 @@ function sidebarEnquiry(tracking = {}, zones = []) {
         selectCity(zone) {
             this.form.location      = zone.name;
             this.form.location_slug = zone.slug || '';
-            this.form.location_id   = zone.id   || null;
+            this.form.location   = zone.id   || null;
             this.showCities = false;
         },
 
