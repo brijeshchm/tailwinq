@@ -81,12 +81,12 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
         <div class="absolute inset-0 bg-indigo-900/50"></div>
         <div class="relative w-full px-3 sm:px-8 py-3 sm:py-5 flex items-center gap-3 sm:gap-5 h-full">
             <div class="flex-1 min-w-0">
-                <div class="flex items-center gap-1.5 sm:gap-2 mb-0.5 sm:mb-1 flex-wrap">
+                <!-- <div class="flex items-center gap-1.5 sm:gap-2 mb-0.5 sm:mb-1 flex-wrap">
                     <span class="text-[9px] sm:text-[10px] font-bold text-white/60 border border-white/20 px-1.5 sm:px-2 py-0.5 rounded-full uppercase tracking-widest">Advertisement</span>
                     <span class="text-[9px] sm:text-[10px] font-bold text-amber-300 bg-amber-300/10 border border-amber-300/20 px-1.5 sm:px-2 py-0.5 rounded-full animate-pulse">Limited Time Offer</span>
-                </div>
-                <h2 class="text-white font-bold text-sm sm:text-xl leading-snug">Transform Your Sleep — Up to 50% Off Premium Mattresses</h2>
-                <p class="text-white/70 text-[10px] sm:text-sm mt-0.5 hidden sm:block">Free delivery · 100-night trial · EMI starting ₹799/mo</p>
+                </div> -->
+                <!-- <h2 class="text-white font-bold text-sm sm:text-xl leading-snug">Transform Your Sleep — Up to 50% Off Premium Mattresses</h2>
+                <p class="text-white/70 text-[10px] sm:text-sm mt-0.5 hidden sm:block">Free delivery · 100-night trial · EMI starting ₹799/mo</p> -->
             </div>
            
         </div>
@@ -710,4 +710,8 @@ function listingPage() {
 }
 </script>
  
+
+
+
+
 @endsection

@@ -66,13 +66,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-KF6W10RN9L');
 </script>
 
    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
-        /* Pulse animation for Free Listing button */
+        
         @keyframes pulse-ring {
             0% { transform: scale(1); opacity: 0.6; }
             100% { transform: scale(1.6); opacity: 0; }
@@ -122,9 +121,132 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+@php
+     
+    $serviceName = !empty($metaTitle)
+        ? $metaTitle
+        : "";
+
+    $serviceDescription = 'India leading local business search & service directory | QuickDials.';
+    $cityName = ucfirst($city ?? '');
+    if (!empty($childCat) && !empty($childSlug)) {
+        $items[] = ['name' => ucfirst($childCat), 'url' => route('child.show', $childSlug)];
+    }
+
+    if (!empty($keyword)) {
+        $items[] = ['name' => $keyword, 'url' => url()->current()];
+    }else{
+     $items[] = ['name' => request()->segment(1), 'url' => url()->current()];
+    }
+
+    $breadcrumbs = array_merge(
+        [['name' => 'Home', 'url' => url('/')]],
+        $items
+    );
+
+
+@endphp
+
+ 
+@php
+   
+    $schemas = [];
+
+  
+    $schemas[] = [
+        '@context' => 'https://schema.org',
+        '@type'    => 'Organization',
+        'name'     => 'QuickDials',
+        'url'      => url('/'),
+        'logo'     => asset('client/images/small-logo.jpg'),
+        'sameAs'   => [
+            'https://www.facebook.com/quickdialsofficial/',
+            'https://x.com/Quickdials',
+            'https://www.linkedin.com/company/quickdialsoffical/',
+            'https://www.pinterest.com/quickdialsoffical/',
+            'https://www.instagram.com/quickdialsoffical/',
+            'https://www.youtube.com/@quickdialsofficial/',
+        ],
+    ];
+
+    // ---- 2. SERVICE (only if service data exists) ----
+    if (!empty($serviceName)) {
+        $schemas[] = [
+            '@context'    => 'https://schema.org',
+            '@type'       => 'Service',
+            'name'        => $serviceName ?? '',
+            'description' => $serviceDescription ?? '',
+            'url'         => url()->current(),
+            'areaServed'  => $cityName ?? null,
+            'provider'    => [
+                '@type' => 'Organization',
+                'name'  => 'QuickDials',
+                'url'   => url('/'),
+            ],
+        ];
+    }
+
+    // ---- 3. BREADCRUMBS ----
+    if (!empty($breadcrumbs)) {
+        $breadcrumbList = [];
+        foreach ($breadcrumbs as $i => $item) {
+            $breadcrumbList[] = [
+                '@type'    => 'ListItem',
+                'position' => $i + 1,
+                'name'     => $item['name'],
+                'item'     => $item['url'],
+            ];
+        }
+
+        $schemas[] = [
+            '@context'        => 'https://schema.org',
+            '@type'           => 'BreadcrumbList',
+            'itemListElement' => $breadcrumbList,
+        ];
+    }
+
+    
+
+    // ---- 5. FAQ ----
+    if (!empty($faqs)) {
+        $validFaqs = collect($faqs)
+            ->filter(fn($f) => !empty($f['q']) && !empty($f['a']))
+            ->map(fn($f) => [
+                '@type'          => 'Question',
+                'name'           => $f['q'],
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text'  => strip_tags($f['a']),
+                ],
+            ])
+            ->values()
+            ->all();
+
+        if (!empty($validFaqs)) {
+            $schemas[] = [
+                '@context'   => 'https://schema.org',
+                '@type'      => 'FAQPage',
+                'mainEntity' => $validFaqs,
+            ];
+        }
+    }
+@endphp
+
+@if(!empty($schemas))
+<script type="application/ld+json">
+{!! json_encode(
+    count($schemas) === 1 ? $schemas[0] : $schemas,
+    JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+) !!}
+</script>
+@endif
+
   
     @include('client.layouts.navbar')
 
+
+
+ 
     <main>
       
         @yield('content')

@@ -572,23 +572,28 @@ $starPercentages = collect([5,4,3,2,1])->map(fn($s) => [
             💬 Frequently Asked Questions — {{ $keyword }}
         </h2>
         <div class="space-y-2">
+            <div itemscope itemtype="https://schema.org/FAQPage">
             @foreach($faqs as $fi => $faq)
             @if(!empty($faq['q']) && !empty($faq['a']))
-            <div class="border border-gray-100 rounded-xl overflow-hidden mt-4">
+            <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="border border-gray-100 rounded-xl overflow-hidden mt-4">
                 <button @click="openFaq = openFaq === {{ $fi }} ? null : {{ $fi }}"
-                        class="w-full flex items-center justify-between px-4 py-3 text-left text-sm font-medium text-gray-800 hover:bg-gray-50 transition-colors">
-                    {{ $faq['q'] }}
+                        class="w-full flex items-center justify-between px-4 py-3 text-left text-sm font-medium text-gray-800 hover:bg-gray-50 transition-colors" >
+                   <div itemprop="name"> {{ $faq['q'] }} </div>
                     <span x-text="openFaq === {{ $fi }} ? '▲' : '▼'" class="text-gray-400 text-xs flex-shrink-0 ml-2"></span>
                 </button>
-                <div x-show="openFaq === {{ $fi }}" x-cloak class="px-4 pb-4 text-xs text-gray-500 leading-relaxed border-t border-gray-100 pt-3">
-                    {!! $faq['a'] !!}
+                <div x-show="openFaq === {{ $fi }}" x-cloak class="px-4 pb-4 text-xs text-gray-500 leading-relaxed border-t border-gray-100 pt-3" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                 <div itemprop="text">   {!! $faq['a'] !!}</div>
                 </div>
             </div>
             @endif
             @endforeach
+            </div>
         </div>
     </div>
     @endif
+
+
+
 
     {{-- Related Categories --}}
     @if(!empty($relatedCategory))
@@ -706,5 +711,7 @@ function listingPage() {
     }
 }
 </script>
- 
+  
+
+
 @endsection
